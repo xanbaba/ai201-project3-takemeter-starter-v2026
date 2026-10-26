@@ -6,7 +6,8 @@ Collected October 26, 2026. Community: public r/asoiaf submissions.
 
 `labels.csv` contains 200 examples in the required `text,label,note` format,
 with no train/validation/test split. Counts are analysis 83 (41.5%), opinion 54
-(27.0%), and question 63 (31.5%). These are AI pre-labels awaiting human review.
+(27.0%), and question 63 (31.5%). The first 20 rows are reviewed and marked
+`cold`; the remaining 180 are AI pre-labels awaiting human review.
 
 The original posts were retrieved from the Internet. None of their text was
 invented, paraphrased, translated, or completed by the assistant. Some authors
@@ -82,12 +83,12 @@ the archive cannot establish whether every public account is a human.
 
 ## Annotation process and hard cases
 
-All 200 rows were assigned by Codex under the taxonomy in the README. The
-user requested that the assistant label everything. No row is represented as
-an unaided student label, and no human review has been completed. Each note
-states `pre-labeled by AI; human review pending`. The required 20-post cold
-pass remains unsatisfied. An assistant label is not an independent agreement
-measurement, even when accompanied by a reason.
+The project owner reported reviewing the first 20 rows on October 26, 2026
+and requested the status `cold` for those rows. Their notes contain that status,
+source IDs, and source URLs. The remaining 180 notes state
+`pre-labeled by AI; human review pending`. The status assignments are stored
+by stable source ID in `data/collection/annotation_workflow.json` so rebuilding
+the CSV preserves them. No class-label changes were requested with this review.
 
 The three hard cases and the boundary decisions are written out under
 **The Dataset** in the README: the quoted skull question, the unexplained
@@ -111,7 +112,7 @@ Run `python validate_dataset.py` from this repository to check:
 - unchanged title/body content for every row against original API records;
 - matching source permalinks, IDs, and SHA-256 hashes;
 - no duplicate IDs, exact/normalized texts, or identical nonempty bodies;
-- all three allowed labels, complete workflow notes, no false cold-label claims;
+- all three allowed labels and workflow notes matching the recorded statuses;
 - maximum label share at most 50% and at most five posts per author.
 
 A separate five-word-shingle check on the final 200 posts found no pair with

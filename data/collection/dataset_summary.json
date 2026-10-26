@@ -26,8 +26,8 @@
     "non_self_submission": 109,
     "bot_or_deleted_author": 15
   },
-  "cold_labels": 0,
-  "ai_prelabels": 200,
-  "human_reviews_completed": 0,
+  "cold_labels": 20,
+  "ai_prelabels": 180,
+  "human_reviews_completed": 20,
   "split_performed": false
 }

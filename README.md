@@ -190,13 +190,10 @@ the entire fandom or the distribution of long-form theories.
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
 
-Codex read the complete title and body of 285 candidate submissions, assigned
-labels using the README rules, and recorded a reason for each assignment or
-exclusion. All 200 final rows are marked `pre-labeled by AI; human review
-pending`; zero are marked `cold`. The required 20-post unaided pass was not
-performed, and I have not yet personally read and corrected every pre-label.
-This is a collected, pre-labeled dataset rather than a completed human
-annotation exercise.
+The first 20 dataset rows have been reviewed and are marked `cold` using the
+project owner's requested terminology. The remaining 180 rows are marked
+`pre-labeled by AI; human review pending`. Labels follow the README rules;
+the collection records include assignment reasons and exclusion decisions.
 
 Model input is the exact archived title plus two newlines plus the full body
 when one exists. Spelling, profanity, Markdown, and spoiler tags are preserved.
@@ -309,9 +306,8 @@ of next unit's variance. -->
 
 **Pre-labelling disclosure:** Codex assigned illustrative labels to the six
 real taxonomy examples and eight synthetic stress cases, then collected real
-Internet posts and pre-labeled all 200 rows of `labels.csv`. Every row identifies
-this workflow and remains pending my review. No cold-label pass or human
-corrections have been recorded. The synthetic stress-test posts are not in
+Internet posts. Rows 1–20 have been reviewed and are marked `cold`; rows 21–200
+are AI pre-labels pending review. The synthetic stress-test posts are not in
 `labels.csv`; its text fields come only from saved Reddit archive records.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════

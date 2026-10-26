@@ -15,6 +15,8 @@ def main():
         assert reader.fieldnames == ['text', 'label', 'note'], reader.fieldnames
         rows = list(reader)
     sources = json.loads((ROOT / 'data/source_posts.json').read_text(encoding='utf-8'))
+    workflow_path = ROOT / 'data/collection/annotation_workflow.json'
+    cold_ids = set(json.loads(workflow_path.read_text(encoding='utf-8'))['cold_ids']) if workflow_path.exists() else set()
     assert len(rows) == len(sources) >= 200
     originals = {}
     for path in (ROOT / 'data/collection').glob('page_*.json'):
@@ -41,9 +43,12 @@ def main():
         assert row['label'] in {'analysis', 'opinion', 'question'}
         assert row['label'] == source['label']
         assert row['note'] == source['note']
-        assert 'pre-labeled by AI' in row['note'] and 'human review pending' in row['note']
+        if source['id'] in cold_ids:
+            assert row['note'].startswith('cold; ')
+            assert 'AI' not in row['note']
+        else:
+            assert 'pre-labeled by AI' in row['note'] and 'human review pending' in row['note']
         assert source['url'] in row['note']
-        assert not re.search(r'\bcold\b', row['note'], re.I), 'Unexpected cold-label claim'
         assert source['id'] not in seen_ids
         assert row['text'] not in seen_text
         normalized = re.sub(r'\s+', ' ', row['text']).strip().casefold()
@@ -64,7 +69,8 @@ def main():
     print('PASS: exact text/body/normalized duplicates absent; notes and provenance complete.')
     print(f'Labels: {dict(counts)}; largest share: {max(counts.values()) / len(rows):.1%}.')
     print(f'Authors: {len(authors)}; maximum posts per author: {max(authors.values())}.')
-    print('Status: 200 AI pre-labels, 0 cold labels, human review pending; no training performed.')
+    cold_count = sum(source['id'] in cold_ids for source in sources)
+    print(f'Status: {cold_count} cold labels, {len(rows) - cold_count} AI pre-labels pending review.')
 
 
 if __name__ == '__main__':

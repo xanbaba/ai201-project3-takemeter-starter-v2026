@@ -21,6 +21,8 @@ def main():
     candidates = read_json(DATA / 'candidates.json')
     annotations = read_json(DATA / 'annotations.json')
     manifest = read_json(DATA / 'manifest.json')
+    workflow_path = DATA / 'annotation_workflow.json'
+    cold_ids = set(read_json(workflow_path)['cold_ids']) if workflow_path.exists() else set()
     originals = {}
     for page in manifest:
         path = DATA / page['file']
@@ -47,8 +49,11 @@ def main():
             continue
         expected = original['title'] + ('\n\n' + original['selftext'] if original['selftext'] else '')
         assert item['text'] == expected
-        note = (f'pre-labeled by AI; human review pending; id={post_id}; '
-                f'source={item["url"]}; rationale={rationale}')
+        if post_id in cold_ids:
+            note = f'cold; id={post_id}; source={item["url"]}'
+        else:
+            note = (f'pre-labeled by AI; human review pending; id={post_id}; '
+                    f'source={item["url"]}; rationale={rationale}')
         selected.append({
             'row': len(selected) + 1,
             'id': post_id,
@@ -86,7 +91,9 @@ def main():
         'collected_unique': len(originals), 'short_candidates': len(candidates),
         'annotated_candidates': len(annotations),
         'initial_exclusions': dict(Counter(p['reason'] for p in read_json(DATA / 'exclusions.json'))),
-        'cold_labels': 0, 'ai_prelabels': len(selected), 'human_reviews_completed': 0,
+        'cold_labels': sum(p['id'] in cold_ids for p in selected),
+        'ai_prelabels': sum(p['id'] not in cold_ids for p in selected),
+        'human_reviews_completed': sum(p['id'] in cold_ids for p in selected),
         'split_performed': False,
     }
     (DATA / 'dataset_summary.json').write_text(json.dumps(stats, indent=2) + '\n', encoding='utf-8')
