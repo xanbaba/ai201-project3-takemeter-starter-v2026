@@ -42,14 +42,14 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
-TakeMeter will classify public discussion submissions from
-[r/asoiaf](https://www.reddit.com/r/asoiaf/), a community within the A Song of
-Ice and Fire fandom. It will sort submissions into `analysis`, `opinion`, and
-`question` using the evidence and position expressed in the title and body.
-The [community reading notes](milestone1.md) contain 30 linked submissions,
-three candidate distinctions, AI-assistance disclosure, and the unresolved
-assignment concern about spoilers. The student's twenty-minute reading is
-still pending.
+TakeMeter classifies public [r/asoiaf](https://www.reddit.com/r/asoiaf/)
+discussion submissions from the A Song of Ice and Fire fandom as `analysis`,
+`opinion`, or `question`. It distinguishes arguments supported by specific
+evidence, positions without that support, and requests for answers. The project
+uses 200 real public submissions and fine-tunes `distilbert-base-uncased` with
+a stratified train/validation/test split. Five acceptance criteria in
+[criteria.md](criteria.md) define the standard for evaluating the classifier
+next unit; this unit saves the training results and held-out posts.
 
 
 
@@ -190,8 +190,8 @@ the entire fandom or the distribution of long-form theories.
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
 
-The first 20 dataset rows have been reviewed and are marked `cold` using the
-project owner's requested terminology. The remaining 180 rows are marked
+The first 20 dataset rows have been reviewed and are marked `cold`. The
+remaining 180 rows are marked
 `pre-labeled by AI; human review pending`. Labels follow the README rules;
 the collection records include assignment reasons and exclusion decisions.
 
@@ -321,27 +321,31 @@ acceptance targets were kept unchanged; detailed evaluation belongs to Unit 6.
 
 **Moment 1**
 
-- *What I asked for:* Read the project and help scout the ASOIAF community.
-- *What came back:* Codex prepared 30 linked submission observations and three
-  candidate distinctions in `milestone1.md`.
-- *What I changed:* The project now names r/asoiaf as its single collection
-  community. My personal twenty-minute reading and review are still pending.
+- *What I asked for:* Help turn observations from r/asoiaf into clear labels,
+  then stress-test their boundaries with eight synthetic posts.
+- *What came back:* Three definitions, real examples, and boundary cases that
+  mixed questions, quotations, emotional reactions, and arguments.
+- *What I changed:* The taxonomy requires a claim, identifiable evidence, and
+  an author-supplied connection for `analysis`. The precedence rule is
+  `analysis`, then `opinion`, then `question`, so mixed posts receive one label.
 
 **Moment 2**
 
-- *What I asked for:* Help complete Milestone 2, including real examples and
-  eight AI-generated boundary cases.
-- *What came back:* Codex drafted three definitions, six linked examples, a
-  two-sided boundary discussion, and the stress test in `milestone2.md`.
-- *What I changed:* The documented taxonomy now requires evidence to be
-  explicitly connected to a claim and uses analysis/opinion/question precedence.
-  Codex made these edits; I have not yet independently validated its choices.
+- *What I asked for:* Check that the training notebook used every collected
+  post and did not cut off its text, while preserving the original split.
+- *What came back:* Tokenization checks showed 95 posts exceeded the 128-token
+  default, with the longest at 303 tokens. The split already included all 200
+  posts across 139 training, 31 validation, and 30 test examples.
+- *What I changed:* `MAX_LENGTH` became 320, which preserves every post's full
+  tokenized text. The original split and training logic stayed intact, and
+  sections 4–5 were run with that setting.
 
-**Pre-labelling disclosure:** Codex assigned illustrative labels to the six
-real taxonomy examples and eight synthetic stress cases, then collected real
-Internet posts. Rows 1–20 have been reviewed and are marked `cold`; rows 21–200
-are AI pre-labels pending review. The synthetic stress-test posts are not in
-`labels.csv`; its text fields come only from saved Reddit archive records.
+**Pre-labelling disclosure:** Rows 1–20 are reviewed and marked `cold`.
+Codex pre-labeled rows 21–200 using the written taxonomy, with a rationale and
+source URL in each note; those 180 pre-labels remain pending my review.
+Codex also helped collect the public posts and test the taxonomy. The eight
+synthetic boundary examples are excluded from `labels.csv`; every dataset text
+matches a saved Reddit archive record.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
