@@ -157,9 +157,9 @@ link-only content, and bare announcements/resources with neither a position
 nor a request. Record exclusion reasons during collection. Read the entire
 title and body before labeling; do not infer evidence from replies or links.
 
-The [eight-case AI boundary stress test](milestone2.md) records the revisions
-and a two-sided argument for the real borderline post. These definitions were
-drafted with Codex; independent human agreement has not been measured.
+The definitions were stress-tested against eight synthetic boundary posts and
+a two-sided argument for the real borderline post. Synthetic examples are not
+part of the dataset. Independent human agreement has not been measured.
 
 
 
@@ -174,10 +174,8 @@ drafted with Codex; independent human agreement has not been measured.
 
 200 public text submissions from r/asoiaf, posted October 6–25, 2026, collected
 on October 26 through the [Arctic Shift public Reddit archive](https://github.com/ArthurHeitmann/arctic_shift).
-Every `note` contains the original Reddit permalink. The
-[source ledger](data/source_posts.json) preserves each original title and body,
-source ID, timestamp, author, and snapshot/text hashes. The collection snapshots
-and exclusion records are in [data/collection](data/collection).
+Every `note` contains the original Reddit permalink and source ID so the
+corresponding public discussion can be located.
 
 The sampling frame is complete English text submissions of at most 1,200
 characters, including the title; longer posts were excluded, never shortened.
@@ -192,8 +190,8 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 The first 20 dataset rows have been reviewed and are marked `cold`. The
 remaining 180 rows are marked
-`pre-labeled by AI; human review pending`. Labels follow the README rules;
-the collection records include assignment reasons and exclusion decisions.
+`pre-labeled by AI; human review pending`. Labels follow the README rules,
+and the notes explain the remaining pre-label assignments.
 
 Model input is the exact archived title plus two newlines plus the full body
 when one exists. Spelling, profanity, Markdown, and spoiler tags are preserved.
@@ -201,13 +199,12 @@ Replies, usernames, votes, source URLs, and annotation reasons are not added to
 the `text` field. Removed/deleted records, known AutoModerator posts, non-text
 submissions, repeated drafts, and out-of-scope announcements were excluded.
 One additional archived post was excluded after a Reddit spot check showed
-that its body had since been deleted. The ledger records archive text, not a
-guarantee that every live post is unchanged.
+that its body had since been deleted. The dataset contains the archived text;
+live posts may subsequently change or disappear.
 
-The dataset remains **one unsplit `labels.csv`**. All 200 texts match their
-saved Internet records exactly, and exact/whitespace-normalized duplicates
-and repeated nonempty bodies are absent. The collection and validation steps
-are documented in [milestone4.md](milestone4.md).
+The dataset remains **one unsplit `labels.csv`**. The collected titles and
+bodies are preserved without rewriting or shortening. Checks found no exact
+or whitespace-normalized duplicate texts or repeated nonempty bodies.
 
 **Counts per label:**
 
@@ -344,8 +341,8 @@ acceptance targets were kept unchanged; detailed evaluation belongs to Unit 6.
 Codex pre-labeled rows 21–200 using the written taxonomy, with a rationale and
 source URL in each note; those 180 pre-labels remain pending my review.
 Codex also helped collect the public posts and test the taxonomy. The eight
-synthetic boundary examples are excluded from `labels.csv`; every dataset text
-matches a saved Reddit archive record.
+synthetic boundary examples are excluded from `labels.csv`; dataset texts were
+collected from the public Reddit archive, with source URLs in the notes.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
