@@ -263,16 +263,50 @@ cap. Counts may change after human review; recompute them before training.
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`, with a three-label classification head
+for `analysis`, `opinion`, and `question`.
 
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
 
-**Anything I changed from the defaults, and why:**
+Three epochs, learning rate `2e-5`, batch size 16, maximum length 128 tokens,
+and seed 42. The notebook runs in this project's `.venv` on Python 3.11.9.
+Device: `cpu` (CPU), with PyTorch `2.14.1+cpu`.
+
+**Anything I changed from the defaults, and why:** The starter label list
+`analysis`, `hot_take`, `reaction` was replaced with `analysis`, `opinion`,
+`question` to match `labels.csv`. Training logic and hyperparameter defaults
+were kept unchanged. The CSV preserves complete posts; the default tokenizer
+truncates model input beyond 128 tokens.
+
+With this model's tokenizer, 95 of the 200 posts exceed 128 tokens (the longest
+is 303 tokens). Evidence late in those posts may therefore be outside the
+model's view. The default was retained for this first run; no second run or
+hyperparameter stretch feature was added.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
+139 training / 31 validation / 30 test examples. The stratified 70/15/15
+procedure gives validation one extra row because of rounding.
+
+| Label | Train | Validation | Test |
+|---|---:|---:|---:|
+| `analysis` | 57 | 13 | 13 |
+| `opinion` | 38 | 8 | 8 |
+| `question` | 44 | 10 | 9 |
+| **Total** | **139** | **31** | **30** |
+
+No label has fewer than eight test examples, but opinion has exactly eight,
+so a few errors can substantially change its score across seeds next unit.
+
+**Run completed:** October 26, 2026. Notebook sections 1–5 completed on CPU
+using the project's `.venv` kernel. Section 2 reported no dataset problems or
+warnings. `results.json` saves the held-out metrics and records `device: cpu`,
+`device_name: CPU`, `torch_version: 2.14.1+cpu`, and `max_length: 128`.
+`test_split.csv` saves the same 30 held-out posts for next unit's baseline.
+Sections 6–7 and the baseline/agreement runs were not executed. The original
+acceptance targets were kept unchanged; detailed evaluation belongs to Unit 6.
 
 
 ---
