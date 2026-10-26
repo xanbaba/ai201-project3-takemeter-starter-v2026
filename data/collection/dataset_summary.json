@@ -1,0 +1,33 @@
+{
+  "rows": 200,
+  "label_counts": {
+    "analysis": 83,
+    "question": 63,
+    "opinion": 54
+  },
+  "label_shares": {
+    "analysis": 0.415,
+    "question": 0.315,
+    "opinion": 0.27
+  },
+  "unique_authors": 136,
+  "max_posts_per_author": 5,
+  "title_only_rows": 9,
+  "min_characters": 67,
+  "max_characters": 1195,
+  "first_post_utc": "2026-10-06T13:46:32+00:00",
+  "last_post_utc": "2026-10-25T23:13:26+00:00",
+  "collected_unique": 800,
+  "short_candidates": 317,
+  "annotated_candidates": 285,
+  "initial_exclusions": {
+    "outside_short_submission_sampling_frame": 157,
+    "removed_or_deleted": 202,
+    "non_self_submission": 109,
+    "bot_or_deleted_author": 15
+  },
+  "cold_labels": 0,
+  "ai_prelabels": 200,
+  "human_reviews_completed": 0,
+  "split_performed": false
+}

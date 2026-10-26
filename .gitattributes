@@ -1,0 +1,3 @@
+# Preserve embedded source newlines in the dataset and byte hashes of snapshots.
+labels.csv -text -whitespace
+data/collection/page_*.json -text -whitespace

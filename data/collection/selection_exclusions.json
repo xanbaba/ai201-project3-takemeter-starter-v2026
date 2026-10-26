@@ -1,0 +1,470 @@
+[
+  {
+    "id": "1xfbocz",
+    "reason": "Reddit spot check found the author deleted and the original body absent; do not retain the archived body in labels.csv."
+  },
+  {
+    "id": "1xf0xrh",
+    "reason": "Near-duplicate draft of 1xf10vv."
+  },
+  {
+    "id": "1xe6m9x",
+    "reason": "Near-duplicate Rhaegar/Elia argument retained as 1xei8mf."
+  },
+  {
+    "id": "1xe6iqu",
+    "reason": "Near-duplicate Rhaegar/Elia argument retained as 1xei8mf."
+  },
+  {
+    "id": "1xd7ruo",
+    "reason": "Near-identical draft of 1xd7ttr."
+  },
+  {
+    "id": "1xcnvwt",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xbga6g",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xb0h14",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xaur4l",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xac90e",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xac8b7",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1xa3oxf",
+    "reason": "Title announces a compiled list, but the archived body is empty; the promised evidence is absent."
+  },
+  {
+    "id": "1x9vskm",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x9sywx",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x9aj9p",
+    "reason": "German-language submission outside the English-language sampling frame; no translation substituted."
+  },
+  {
+    "id": "1x8ztaq",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7qqmq",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7qjqg",
+    "reason": "Reuses the child-loss, drunken-flight, and lineage arguments already present in 1xeng5b, 1xac90e, and 1xb0eqk."
+  },
+  {
+    "id": "1x7qhjy",
+    "reason": "Same body as 1x7qjqg and overlapping retained arguments."
+  },
+  {
+    "id": "1x7qfmm",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7ofm3",
+    "reason": "Repeats the lineage-based Rhaenyra victory argument retained as 1xb0eqk."
+  },
+  {
+    "id": "1x7o0n1",
+    "reason": "Repeats the same named-descendant argument retained as 1xb0eqk."
+  },
+  {
+    "id": "1x7ng5r",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7nas9",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7n4r8",
+    "reason": "Repeats the descendant-hatred argument retained as 1xb08af."
+  },
+  {
+    "id": "1x7mvx5",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7butv",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7b0o9",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x7ajhx",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x6ccgx",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x6a4px",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x5t30h",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x5sq2f",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x54fj9",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x4ugbe",
+    "reason": "Reuses the Roose taboo-breaking-versus-kinslaying argument retained as 1x9vskm."
+  },
+  {
+    "id": "1x4ucar",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x4j3z3",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x46zc1",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x42uen",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3zez4",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3zayh",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3wzgn",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3na7q",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3m8e9",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3m805",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3l9ik",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3kn9n",
+    "reason": "Same body and argument as 1x3l9ik with a different title."
+  },
+  {
+    "id": "1x3firi",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x3bzrv",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x33y7z",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2xbhv",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2m1js",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2lua7",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2kt9u",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2kqh7",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2kk9p",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2d4tx",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x2afye",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x29j3z",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x23twh",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1yjtx",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1y7qa",
+    "reason": "Bare publication anniversary announcement with an image link, outside the defined discussion scope."
+  },
+  {
+    "id": "1x1txhr",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1tpfj",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1m05l",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1jkss",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x1fv83",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x0q61h",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x0mcz4",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x0kt7v",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x0kq86",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x0e1k2",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1x081mx",
+    "reason": "Contains a substantial third-party song lyric; excluded rather than altering or truncating the post."
+  },
+  {
+    "id": "1wzx63p",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1wzuuse",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1wzuha5",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1wz1iwh",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wz0s2i",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wyz9z9",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wytbxa",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1wysoeq",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wys498",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wyruum",
+    "reason": "author_cap_5"
+  },
+  {
+    "id": "1wymso9",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wylmsv",
+    "reason": "after_200_eligible_rows"
+  },
+  {
+    "id": "1wylmm6",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wyliy0",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wyik2j",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wygvzu",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wyes8w",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wydp78",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wy6sop",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wy4ix9",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wy1mol",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxz5is",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxw0rt",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxtdgx",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxr78u",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxnbpx",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxnbfh",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxld0b",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxhe1m",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxfxy8",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxczz8",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxcg92",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxcexa",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxccwd",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxc6p7",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxblo2",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxaxqk",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wxa7t8",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwy3fh",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwxuqx",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwwypu",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwvnx1",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwp1bd",
+    "reason": "not_annotated"
+  },
+  {
+    "id": "1wwnwzh",
+    "reason": "not_annotated"
+  }
+]

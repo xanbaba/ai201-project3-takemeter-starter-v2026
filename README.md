@@ -172,17 +172,57 @@ drafted with Codex; independent human agreement has not been measured.
 
 **Where the posts came from:**
 
+200 public text submissions from r/asoiaf, posted October 6–25, 2026, collected
+on October 26 through the [Arctic Shift public Reddit archive](https://github.com/ArthurHeitmann/arctic_shift).
+Every `note` contains the original Reddit permalink. The
+[source ledger](data/source_posts.json) preserves each original title and body,
+source ID, timestamp, author, and snapshot/text hashes. The collection snapshots
+and exclusion records are in [data/collection](data/collection).
+
+The sampling frame is complete English text submissions of at most 1,200
+characters, including the title; longer posts were excluded, never shortened.
+Nine selected posts consist only of a text title. After examining 800 archived
+records, 317 passed the initial eligibility filters. The 200 most recent
+annotated eligible submissions were retained with at most five per author
+(136 distinct authors). This favors short discussions and does not represent
+the entire fandom or the distribution of long-form theories.
+
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+
+Codex read the complete title and body of 285 candidate submissions, assigned
+labels using the README rules, and recorded a reason for each assignment or
+exclusion. All 200 final rows are marked `pre-labeled by AI; human review
+pending`; zero are marked `cold`. The required 20-post unaided pass was not
+performed, and I have not yet personally read and corrected every pre-label.
+This is a collected, pre-labeled dataset rather than a completed human
+annotation exercise.
+
+Model input is the exact archived title plus two newlines plus the full body
+when one exists. Spelling, profanity, Markdown, and spoiler tags are preserved.
+Replies, usernames, votes, source URLs, and annotation reasons are not added to
+the `text` field. Removed/deleted records, known AutoModerator posts, non-text
+submissions, repeated drafts, and out-of-scope announcements were excluded.
+One additional archived post was excluded after a Reddit spot check showed
+that its body had since been deleted. The ledger records archive text, not a
+guarantee that every live post is unchanged.
+
+The dataset remains **one unsplit `labels.csv`**. All 200 texts match their
+saved Internet records exactly, and exact/whitespace-normalized duplicates
+and repeated nonempty bodies are absent. The collection and validation steps
+are documented in [milestone4.md](milestone4.md).
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `analysis` | 83 | 41.5% |
+| `opinion` | 54 | 27.0% |
+| `question` | 63 | 31.5% |
+| **Total** | **200** | **100%** |
+
+The largest share meets both the assignment's 70% cap and criterion 4's 50%
+cap. Counts may change after human review; recompute them before training.
 
 **Three hard cases**
 
@@ -190,25 +230,35 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* [Golden Company general with pointed teeth](https://www.reddit.com/r/asoiaf/comments/1xdrprm/)
+> quotes a description of a skull and asks who it belonged to.
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `question`.
 >
-> *I chose, because:*
+> *Chosen pre-label, because:* `question`. The passage identifies what the
+> writer is asking about; the writer offers no identity or explanatory claim.
+> A quotation by itself does not establish analysis.
 
 **2.**
-> *The post:*
+> *The post:* [Most satisfying moment](https://www.reddit.com/r/asoiaf/comments/1xcs178/)
+> selects Jon's call for volunteers and quotes the scene after saying “Mine is”.
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `opinion`.
 >
-> *I chose, because:*
+> *Chosen pre-label, because:* `opinion`. The author gives a favorite and its
+> text but does not explain how a feature of the scene produces satisfaction.
+> Inferring that explanation would add an argument the author did not write.
 
 **3.**
-> *The post:*
+> *The post:* [Alayne's smile](https://www.reddit.com/r/asoiaf/comments/1x5o5wo/)
+> calls a quoted line chilling and explains it as Sansa internalizing Petyr's
+> lessons and losing part of herself.
 >
-> *Could have been:*
+> *Could have been:* `opinion` or `analysis`.
 >
-> *I chose, because:*
+> *Chosen pre-label, because:* `analysis`. Unlike an unexplained favorite
+> quotation, this post connects the wording to a characterization argument.
+> Emotional language and profanity do not override that connection.
 
 ---
 
@@ -258,9 +308,11 @@ of next unit's variance. -->
   Codex made these edits; I have not yet independently validated its choices.
 
 **Pre-labelling disclosure:** Codex assigned illustrative labels to the six
-real taxonomy examples and eight synthetic stress cases. No `labels.csv` has
-been created or pre-labelled yet. Synthetic cases are excluded from the real
-dataset; any later AI pre-labelling and my corrections will be disclosed here.
+real taxonomy examples and eight synthetic stress cases, then collected real
+Internet posts and pre-labeled all 200 rows of `labels.csv`. Every row identifies
+this workflow and remains pending my review. No cold-label pass or human
+corrections have been recorded. The synthetic stress-test posts are not in
+`labels.csv`; its text fields come only from saved Reddit archive records.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
