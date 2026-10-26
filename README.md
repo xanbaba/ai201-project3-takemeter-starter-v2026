@@ -283,6 +283,13 @@ is 303 tokens). Evidence late in those posts may therefore be outside the
 model's view. The default was retained for this first run; no second run or
 hyperparameter stretch feature was added.
 
+**Configuration for the next run:** `MAX_LENGTH` is now 320, which covers all
+200 complete posts (maximum 303 tokens including special tokens). Tokenization
+checks confirm zero truncation. The original stratified split and training
+logic are unchanged: 139 train / 31 validation / 30 test, with all 200 posts
+accounted for exactly once. A new training run with this limit has not started;
+the saved results above still describe the completed 128-token run.
+
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
