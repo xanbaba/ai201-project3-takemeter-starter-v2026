@@ -42,6 +42,15 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter will classify public discussion submissions from
+[r/asoiaf](https://www.reddit.com/r/asoiaf/), a community within the A Song of
+Ice and Fire fandom. Milestone 1 explores observable differences in evidence,
+personal evaluation, and requests for answers; final labels are not chosen yet.
+The [community reading notes](milestone1.md) contain 30 linked submissions,
+three candidate distinctions, AI-assistance disclosure, and the unresolved
+assignment concern about spoilers. The student's twenty-minute reading is
+still pending.
+
 
 
 ---
