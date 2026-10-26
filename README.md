@@ -268,27 +268,19 @@ for `analysis`, `opinion`, and `question`.
 
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
 
-Three epochs, learning rate `2e-5`, batch size 16, maximum length 128 tokens,
+Three epochs, learning rate `2e-5`, batch size 16, maximum length 320 tokens,
 and seed 42. The notebook runs in this project's `.venv` on Python 3.11.9.
 Device: `cpu` (CPU), with PyTorch `2.14.1+cpu`.
 
 **Anything I changed from the defaults, and why:** The starter label list
 `analysis`, `hot_take`, `reaction` was replaced with `analysis`, `opinion`,
-`question` to match `labels.csv`. Training logic and hyperparameter defaults
-were kept unchanged. The CSV preserves complete posts; the default tokenizer
-truncates model input beyond 128 tokens.
-
-With this model's tokenizer, 95 of the 200 posts exceed 128 tokens (the longest
-is 303 tokens). Evidence late in those posts may therefore be outside the
-model's view. The default was retained for this first run; no second run or
-hyperparameter stretch feature was added.
-
-**Configuration for the next run:** `MAX_LENGTH` is now 320, which covers all
-200 complete posts (maximum 303 tokens including special tokens). Tokenization
-checks confirm zero truncation. The original stratified split and training
-logic are unchanged: 139 train / 31 validation / 30 test, with all 200 posts
-accounted for exactly once. A new training run with this limit has not started;
-the saved results above still describe the completed 128-token run.
+`question` to match `labels.csv`. `MAX_LENGTH` was increased from 128 to 320
+because 95 of the 200 posts exceed the original limit. The longest post is
+303 tokens including special tokens, and tokenization checks confirm zero
+truncation at 320. All source text remains complete in the CSV. The original
+stratified split and training logic are unchanged, as are epochs, learning
+rate, batch size, and seed. This rerun corrects input coverage; it was not
+selected to improve test scores, and no stretch-feature comparison is claimed.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
@@ -310,7 +302,7 @@ so a few errors can substantially change its score across seeds next unit.
 **Run completed:** October 26, 2026. Notebook sections 1–5 completed on CPU
 using the project's `.venv` kernel. Section 2 reported no dataset problems or
 warnings. `results.json` saves the held-out metrics and records `device: cpu`,
-`device_name: CPU`, `torch_version: 2.14.1+cpu`, and `max_length: 128`.
+`device_name: CPU`, `torch_version: 2.14.1+cpu`, and `max_length: 320`.
 `test_split.csv` saves the same 30 held-out posts for next unit's baseline.
 Sections 6–7 and the baseline/agreement runs were not executed. The original
 acceptance targets were kept unchanged; detailed evaluation belongs to Unit 6.
