@@ -44,8 +44,8 @@
 
 TakeMeter will classify public discussion submissions from
 [r/asoiaf](https://www.reddit.com/r/asoiaf/), a community within the A Song of
-Ice and Fire fandom. Milestone 1 explores observable differences in evidence,
-personal evaluation, and requests for answers; final labels are not chosen yet.
+Ice and Fire fandom. It will sort submissions into `analysis`, `opinion`, and
+`question` using the evidence and position expressed in the title and body.
 The [community reading notes](milestone1.md) contain 30 linked submissions,
 three candidate distinctions, AI-assistance disclosure, and the unresolved
 assignment concern about spoilers. The student's twenty-minute reading is
@@ -63,33 +63,103 @@ still pending.
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+The annotation unit is one human-written submission's title plus body, without
+its replies, votes, username, or linked-page contents. Examples below are real
+submissions from the Milestone 1 reading, with short verbatim excerpts and
+linked explanations; excerpts alone are not the full training examples.
+Source links contain spoilers.
 
-**Definition:**
+### `analysis`
 
-**Example 1:**
->
+**Definition:** A submission that advances an interpretation, explanation,
+prediction, or evaluation and explicitly connects at least one specific,
+checkable passage, scene event, or attributed source statement to that claim.
 
-**Example 2:**
->
+**Example 1:** [Griff wordplay](https://www.reddit.com/r/asoiaf/comments/1u6lggy/)
+> Tyrion is telling Griff he knows who he is already and I never picked up on it.
 
-### `label_two`
+The body quotes the dialogue and explains how a winged lion points to Griff's
+identity; the claim has evidence and an explicit connection.
 
-**Definition:**
+**Example 2:** [Daemon's final jump](https://www.reddit.com/r/asoiaf/comments/1uojuom/)
+> Half a heartbeat is less than a second.
 
-**Example 1:**
->
+The author uses the passage's timing to argue against a prolonged, triumphant
+interpretation of the scene. Emotional language does not change the label.
 
-**Example 2:**
->
+### `opinion`
+
+**Definition:** A submission that states a position, preference, emotional
+judgment, or speculative answer about the discussion topic but does not connect
+specific, checkable evidence to support any such claim.
+
+**Example 1:** [Reaction to writing plans](https://www.reddit.com/r/asoiaf/comments/1qn68wk/)
+> I doubt we'll see even one more.
+
+The author's central position is disbelief about future stories; mentioning
+announced plans sets the context but does not explain why those plans will fail.
+
+**Example 2:** [Favorite ASOIAF theory](https://www.reddit.com/r/asoiaf/comments/1j3tmpk/)
+> My personal favorite is that Lyanna was unknowingly a secret warg
+
+The author supplies a substantial imagined account of character motives but
+does not identify an existing scene or passage as evidence for its central
+secret-warg premise. The title also asks a question; the body advances an
+unsupported answer, so the position takes precedence.
+
+### `question`
+
+**Definition:** A submission that requests information, clarification,
+recommendations, or other readers' answers without advancing its own position
+or answer about that topic.
+
+**Example 1:** [First-time reading order](https://www.reddit.com/r/asoiaf/comments/svrwnt/)
+> The largest question being whether I should read Fire & Blood before or after the main series.
+
+The writer supplies reading background and a tentative default for the main
+books but does not answer the actual companion-book ordering question.
+
+**Example 2:** [Companion-book spoilers](https://www.reddit.com/r/asoiaf/comments/3icoj0/)
+> Is reading through the book The World of Ice and Fire going to spoil anything?
+
+The writer lists previously read books and asks about spoiler coverage; that
+background is not an argument or an answer to the question.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` and `opinion`.
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+**Borderline real post:** [Reaction to writing plans](https://www.reddit.com/r/asoiaf/comments/1qn68wk/).
+It references an author statement and a proposed number of stories, so it
+contains checkable material; however, it mainly expresses disbelief without
+using that material to explain the prediction. The chosen label is `opinion`.
+
+**Decision rule to apply every time:** Identify a claim about the discussion
+topic, then identify a specific passage, scene event, or attributed statement
+and the author's explanation connecting it to that claim. All three must be
+present for `analysis`; merely naming a character, mentioning a number, quoting
+something, or saying "the books prove it" is insufficient. A clearly described
+scene counts without a chapter number, and an explicit causal or comparative
+connection counts without the word "because". A supported secondary claim
+qualifies even if other claims are unsupported. Otherwise, a stated position
+is `opinion`; if the submission only asks for answers, it is `question`.
+
+**Mixed-post precedence:** Apply `analysis` first, then `opinion`, then
+`question`. Questions in titles do not override an argument in the body.
+Personal reading history and a statement of the problem are background, not
+answers to it. A rhetorical question that asserts an answer counts as a
+position. Evidence need only be identifiable and connected, not persuasive or
+correct; this measures support offered, not canonical truth. Record suspected
+misquotations or factual errors in `note` rather than silently changing labels.
+
+**Scope:** Exclude bots, removed or duplicate submissions, image-only and
+link-only content, and bare announcements/resources with neither a position
+nor a request. Record exclusion reasons during collection. Read the entire
+title and body before labeling; do not infer evidence from replies or links.
+
+The [eight-case AI boundary stress test](milestone2.md) records the revisions
+and a two-sided argument for the real borderline post. These definitions were
+drafted with Codex; independent human agreement has not been measured.
 
 
 
@@ -171,17 +241,26 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Read the project and help scout the ASOIAF community.
+- *What came back:* Codex prepared 30 linked submission observations and three
+  candidate distinctions in `milestone1.md`.
+- *What I changed:* The project now names r/asoiaf as its single collection
+  community. My personal twenty-minute reading and review are still pending.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Help complete Milestone 2, including real examples and
+  eight AI-generated boundary cases.
+- *What came back:* Codex drafted three definitions, six linked examples, a
+  two-sided boundary discussion, and the stress test in `milestone2.md`.
+- *What I changed:* The documented taxonomy now requires evidence to be
+  explicitly connected to a claim and uses analysis/opinion/question precedence.
+  Codex made these edits; I have not yet independently validated its choices.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Codex assigned illustrative labels to the six
+real taxonomy examples and eight synthetic stress cases. No `labels.csv` has
+been created or pre-labelled yet. Synthetic cases are excluded from the real
+dataset; any later AI pre-labelling and my corrections will be disclosed here.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -372,7 +451,7 @@ learned:**
 
        [ ] criteria.md has five numbered criteria, each naming a NUMBER
        [ ] Each has a reason underneath tied to your data or taxonomy
-       [ ] labels.csv: at least 150 rows, text/label/note, ONE file not split
+       [ ] labels.csv: at least 200 rows, text/label/note, ONE file not split
        [ ] No label above 70%
        [ ] All five unit 5 sections have real content
        [ ] Label Taxonomy includes the decision rule for your hardest boundary
