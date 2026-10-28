@@ -364,6 +364,12 @@ collected from the public Reddit archive, with source URLs in the notes.
 | F1 — `label_two` |  |  |  |
 
 **What I predicted before I looked:**
+
+Before running the baseline, I predict that the trained model will have higher
+`analysis` F1 because it has seen fandom-specific examples of evidence-backed
+arguments. Codex recorded this prediction on October 27, 2026, after reading
+the existing Unit 5 trained scores but before seeing any baseline results;
+it is not a prediction made blind to the trained scores.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
