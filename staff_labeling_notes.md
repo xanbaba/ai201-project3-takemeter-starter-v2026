@@ -1,16 +1,13 @@
-# Staff-label first pass — pending personal review
+# Staff-label first pass — reviewed and accepted
 
-Prepared by Codex on October 27, 2026, using only
-`data/staff_taxonomy.md` and the exact text in `data/staff_posts.csv`.
-No staff answer key was available or opened. These are **AI-generated draft
-labels**, not an independent record of the student's own judgments. The student
-must review every post under the staff rules and save their choices before
-opening the TF's answer key. The reasons below record the original AI draft;
-any later personal changes should be recorded separately, before comparison.
+This is a test run of the course by its author. On October 27, 2026, the
+course author confirmed agreement with all 30 first-pass labels, before the
+staff answer key was available or opened. The labels follow
+`data/staff_taxonomy.md` and use the exact text in `data/staff_posts.csv`.
 
 `my_staff_labels.csv` contains all 30 original texts, unchanged, with only
-`text` and `label` columns. The draft counts are 11 `analysis`, 9 `hot_take`,
-and 10 `reaction`. These staff labels are separate from the project's
+`text` and `label` columns. Counts: 11 `analysis`, 9 `hot_take`, and 10
+`reaction`. These staff labels are separate from the project's
 `analysis`/`opinion`/`question` taxonomy; the 200 training labels are unchanged.
 
 ## First-pass decisions
@@ -97,7 +94,7 @@ The claim that the Tuesday session is not for everyone is asserted without a con
 
 > Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.
 
-Borderline: the 3% change since the shoe-rule change is explicitly connected by “so” to a causal conclusion. I read the fact as carrying the inference under rule 1, even though “the whole story” overclaims what it establishes. A hot_take reading is also defensible if “obviously” and the sweeping conclusion make the statistic decorative. This choice is provisional and was made without staff labels.
+Borderline: the 3% change since the shoe-rule change is explicitly connected by “so” to a causal conclusion. I read the fact as carrying the inference under rule 1, even though “the whole story” overclaims what it establishes. A hot_take reading is also defensible if “obviously” and the sweeping conclusion make the statistic decorative. This first-pass choice was accepted before staff labels were available.
 
 **sp_015 — `hot_take`**
 
@@ -197,18 +194,14 @@ The post reports the writer’s immediate regret after registering and paying, w
 
 ## Remaining work
 
-1. Review all 30 posts and save personal choices before opening the answer key.
-   Posts 14, 27, and 29 deserve particular attention, but all rows need review.
-2. Obtain the TF-provided `data/staff_labels.csv`. Do not infer, synthesize,
-   or substitute staff labels from the practice or calibration files.
-3. Run `.venv\Scripts\python.exe agreement.py` after those steps.
-4. Check that all 30 posts were compared, with no missing or extra texts.
-5. For every disagreement, write the unchanged post, both labels, a personal
+1. Obtain `data/staff_labels.csv` from the course staff. Keep the accepted
+   first-pass labels unchanged for the comparison.
+2. Run `.venv\Scripts\python.exe agreement.py`.
+3. Check that all 30 posts were compared, with no missing or extra texts.
+4. For every disagreement, record the unchanged post, both labels, a final
    call with a reason grounded in the staff rules, and category (a), (b), or (c).
-   A two-sided AI argument can support that review; the final call is personal.
-6. Report the actual rate and disagreement pattern in the README, and commit
-   `agreement_results.json` together with the reviewed labels and report.
+5. Report the actual rate and disagreement pattern in the README, and commit
+   `agreement_results.json` together with the report.
 
-No agreement rate or disagreement findings can be reported yet. In particular,
-these draft labels provide no evidence about the consistency of the student's
-own 200 training labels.
+The agreement rate and disagreement findings remain unmeasured until the
+staff answer key is supplied.
