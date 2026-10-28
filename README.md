@@ -357,6 +357,13 @@ and drafted the score tables and matrix interpretation from the results.
 Codex did not relabel posts, change the taxonomy or acceptance targets, or
 make the improvement reserved for Milestone 5.
 
+**Unit 6, Milestone 3 (preparation only):** Codex read the staff definitions,
+drafted labels and reasons for the 30 running-forum posts before any staff key
+was available, and checked that the CSV preserves their text. These AI drafts
+are awaiting my personal review. Agreement measurement and personal
+adjudications are still pending; they are not evidence about my labeling
+consistency yet.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -573,7 +580,23 @@ matrix exactly reproduce the saved Unit 5 result.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Milestone 3 status: first-pass draft prepared; personal review and staff
+answer key required.** Codex read the staff taxonomy and generated draft labels
+for all 30 posts in [my_staff_labels.csv](my_staff_labels.csv), preserving the
+original text exactly. The draft uses the staff definitions of `analysis`,
+`hot_take`, and `reaction`, not this project's own taxonomy. Counts: 11 analysis,
+9 hot_take, 10 reaction. Per-post reasons and borderline cases are documented in
+[staff_labeling_notes.md](staff_labeling_notes.md).
+
+These are AI-generated drafts pending my review, not my independently assigned
+labels. I must review all 30 and save my choices before opening the staff key.
+`data/staff_labels.csv` was absent when the draft was prepared; no staff answers
+were inspected. `agreement.py` cannot calculate the comparison until that file
+is supplied by the TF. No agreement results or adjudications have been invented.
+
+**Agreement rate:** Not yet measured. After personal review and receipt of the
+TF key, run `python agreement.py`, confirm that all 30 posts matched, and report
+the actual rate and every adjudicated disagreement below.
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
