@@ -351,6 +351,12 @@ baseline prompts, and drafted the comparison and interpretation from the saved
 results. No dataset labels, taxonomy, criteria, or training settings were
 changed for this milestone.
 
+**Unit 6, Milestone 2:** Codex executed the existing notebook's setup and
+three-seed/matrix cells in a fresh local `.venv` kernel, saved their outputs,
+and drafted the score tables and matrix interpretation from the results.
+Codex did not relabel posts, change the taxonomy or acceptance targets, or
+make the improvement reserved for Milestone 5.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -435,26 +441,94 @@ are saved separately in
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
 
+**Milestone 2 measurements (before any improvement):** On October 27, 2026,
+Codex executed notebook section 1, the prerequisite setup/data/function cells,
+then sections 6–7 in a fresh kernel using this project's `.venv`. The Unit 5
+single-run training/export calls were skipped when loading their helper
+functions, so `results.json` and `test_split.csv` remain unchanged. All three
+trials completed in one section 6 execution with `RUN_LABEL = "before"`.
+
+**Device and settings:** `cpu` (CPU), PyTorch `2.14.1+cpu`,
+`distilbert-base-uncased`, 3 epochs, learning rate `2e-5`, batch size 16, and
+maximum length 320. Each seed starts from the base checkpoint and creates its
+own stratified split: 139 train, 31 validation, 30 test. No dataset labels,
+taxonomy, criteria, or training settings changed. Full-precision results,
+per-label precision/recall/F1/support, confidence measures, and each seed's
+matrix are saved in
+[results_three_seeds_before.json](results_three_seeds_before.json).
+
+The five original criteria below come from [criteria.md](criteria.md).
+Measurements are filled now; verdicts and evidence-backed diagnoses are
+reserved for Milestone 4 after the agreement check. Minimum label F1 summarizes
+criterion 3; the next table shows every label separately. Criterion 4 uses the
+same complete dataset for all seeds: 200 rows, all three labels present,
+largest class `analysis` at 83/200 = 0.415.
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Held-out accuracy | ≥ 0.70 | 0.600 | 0.400 | 0.567 | Pending Milestone 4 |
+| 2. Held-out macro F1 | ≥ 0.65 | 0.449 | 0.190 | 0.437 | Pending Milestone 4 |
+| 3. Minimum F1 across all three labels | ≥ 0.60 | 0.000 | 0.000 | 0.000 | Pending Milestone 4 |
+| 4. Largest dataset label share | ≤ 0.50; ≥ 200 rows; all labels | 0.415 | 0.415 | 0.415 | Pending Milestone 4 |
+| 5. Confidence accuracy gap | ≥ 0.20 | 0.100 | 0.800 | 0.300 | Pending Milestone 4 |
+
+### Scores across the three seeds
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.600 | 0.400 | 0.567 | 0.200 |
+| Macro F1 | 0.449 | 0.190 | 0.437 | 0.259 |
+| F1 — `analysis` | 0.722 | 0.571 | 0.645 | 0.151 |
+| F1 — `opinion` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `question` | 0.625 | 0.000 | 0.667 | 0.667 |
+
+**Spread:** Accuracy ranges from 0.400 to 0.600, a 0.200 (20 percentage
+point) swing, exceeding the assignment's roughly ten-point warning threshold.
+Macro F1 varies by 0.259, and `question` F1 ranges from 0.000 to 0.667.
+Seed 7 predicts `analysis` for all 30 posts; none of the three models predicts
+`opinion` at all. The 200-post dataset does not yield a stable estimate under
+this training setup. Because the seed changes both the split and training
+randomness, these runs do not isolate which source drives the variation.
+The largest dataset class is only 41.5%, so severe overall class imbalance
+alone does not explain the collapse. Whether inconsistent labels contribute
+requires the agreement check; the matrix alone cannot establish that cause.
+
+All test sets contain each label. Exact per-label test supports and
+precision/recall are recorded below (P = precision, R = recall):
+
+| Label | Seed 42 P / R / n | Seed 7 P / R / n | Seed 2024 P / R / n |
+|---|---|---|---|
+| `analysis` | 0.565 / 1.000 / 13 | 0.400 / 1.000 / 12 | 0.556 / 0.769 / 13 |
+| `opinion` | 0.000 / 0.000 / 8 | 0.000 / 0.000 / 8 | 0.000 / 0.000 / 8 |
+| `question` | 0.714 / 0.556 / 9 | 0.000 / 0.000 / 10 | 0.583 / 0.778 / 9 |
+
+The confidence gaps in the criterion table use the existing notebook measure:
+most-confident-third accuracy minus least-confident-third accuracy, with ten
+posts per third. These pairs are 0.700 − 0.600 (seed 42), 0.800 − 0.000
+(seed 7), and 0.800 − 0.500 (seed 2024). This measures the original criterion 5;
+no additional stretch feature is being introduced.
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+Section 7 uses the first trial, **seed 42**, rather than pooling the three
+runs. Rows are true labels; columns are predictions. Counts sum to 30.
+
+| true \ predicted | analysis | opinion | question |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **analysis** | 13 | 0 | 0 |
+| **opinion** | 6 | 0 | 2 |
+| **question** | 4 | 0 | 5 |
 
 **My biggest off-diagonal number, and what it means:**
+
+Six true `opinion` posts were called `analysis`, while zero true `analysis`
+posts were called `opinion`: the model favors `analysis` across the boundary
+between unsupported positions and evidence-backed arguments. The matrix also
+shows that no post received an `opinion` prediction. Seed 42's accuracy and
+matrix exactly reproduce the saved Unit 5 result.
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
