@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": false,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.3,
+    "f1_macro": 0.15789473684210528,
+    "per_label": {
+      "analysis": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 13
+      },
+      "opinion": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8
+      },
+      "question": {
+        "precision": 0.3103448275862069,
+        "recall": 1.0,
+        "f1": 0.4736842105263158,
+        "support": 9
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "(Spoilers Main) Do Jon Snow fan boys generally have a lower IQ than Catelyn or Sansa fans?\n\nIt's not an insult, just an observation.",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "Real Life Inspirations?  Speculations about what inspired George. [Spoilers MAIN]\n\nAshara Dayne inspired by Elizabeth Taylor.  GRRM was enamoured with the film Ivanhoe and put elements of it in the lore, as evidenced by the Tourney of Ashford.  Elizabeth Taylor is famous for her beauty and her violet eyes and starred as one of the main ladies in Ivanhoe.\n\nLyanna Stark inspired by Joan Baez.  Long, beautiful face.  Social justice advocates.  (Lyanna's becoming Knight of the Laughing Tree during the tourney and Joan Baez's own advocacy.  One could even say that their faith plays a role for both.  The Laughing Tree is a weirwood; Joan Baez is a Quaker.)  Like Joan, Lyanna runs off with a married singer.  (Not that I equate Bob Dylan with Rhaegar.)\n\nThe years in the current series were originally intended to parallel those in real life.  The first 3 books came out in 96, 98, and 99.  The book series began in 298.  GRRM tried to implement a year jump in Feast, which was published in 2005.  ",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) If you were the Lord of Winterfell, how would you resolve the Hornwood inheritance?\n\nJust curious who the fandom here backs to inherit Hornwood. So for the sake of the question, you are the Lord of Winterfell. Whether it's a result of the war in the books or not, Lord Halys Hornwood and his son Daryn both die suddenly. Only Lady Donella Manderly is left, too old to bear more children.\n\nHouses Flint, Karstark, and Tallhart have claims to Hornwood through the female line. Lord Halys Hornwood's bastard, Larence Snow, could be legitimized. The Manderly and the Umbers have their eye on the Hornwood lands as well.\n\n  \nHow do you resolve the inheritance issue?",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(spoilers main) Why is there so much perversion and debauchery in the series lol?\n\nNot criticising the quality of the series, its good but I am just slightly surprised by how sexualised the whole series seems to be haha\n\nI feel like every chapter there's something completely random and unnecessary like:\n\nA merchant woman walked past him, her bosom bouncing in time with her steps and drawing stares from the foul drunkards by the brewery who would dream about it tonight\n\nThe Queen regent would insist on rigorously examining the members of the King's guard personally at regular intervals, unclothed, especially their biceps and the sword they were born with, to ensure they were still physically suited for the role, sometimes she would take them away for a private examination of their physical prowess if she deemed it necessary which they returned from struggling to walk, but standing taller still. \n\nThe healer tended his minor wounds, no doubt she would soon attend to his other needs once they had some privacy\n\nWhy lol?",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoilers extended] is there anything in the books you consider overkill? If yes, why?\n\nWhen reading the books, have you ever encountered a plot point that left you like \"damn OK, we get it\" ",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) Can you come up with any holidays people in Westeros might celebrate?\n\nSomething I've always wished GRRM gave us was more holidays/ religious celebrations to flesh out Westerosi culture. So I thought, maybe the fans could come up with some that make sense. \n\nI'll get the ball rolling with 7 day. A celebration where on the 7th day of every 7th moon the Andals celebrate their gods by doing everything in 7's. Lighting 7 candles, praying 7 times throughout the day and throwing a 7 course feast to end the night.",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers AGOT) About Oberyn\n\nWhy did Oberyn never get married? Wouldn\u2019t it be advantageous for a prince to get married?",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "Arya's training and cheating ?(Spoiler published)\n\nHello ! \n\nI'm reading Dance and i just read the chapter where Arya is blind. In the end she get her sigh back because she was able to warg into the cat to see. \n\nFor what i understand in the training process for the faceless they are going blind at some point, and as the man say they get they're sight back when they finally can perceive everything while being blind. \n\nAnd then i don't really understand if Arya using the cat was expected by the faceless and what they wanted her to learn. Or was it just that she \"cheat\" her way out by the fact she posses this ability ? ",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(spoilers extended) How would Targaryen branching actually look like?\n\nSo i do this thing where i ask an AI to make some alternative timeline with Targaryens with dragons still alive so i can be somewhere there and play the role of a dragon riding prince\n\nHowever AI isn't smart and for some reason repeatedly does this thing where it makes dragonstone and summerhall the seat of a cadet branch to house Targaryen , as far as im aware something like that does sound likely for summerhall but it'll require some very unique circumstances for dragonstone to stop being where the crown prince sits at , it either doesn't make branches or just defaults to these 2\n\nBut it made me wonder , in a world with a successful Targaryen family that had no dance to cripple it's dragon population then eventually branch families should become a thing , in canon the only thing like it was the Blackfyres and they basically immediately went to try and snatch the crown in an era with no dragons , i was wondering what the branching would look like under hopefully more peaceful conditions and see what ideas to people have for how that would look like or work",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) Things that were added surprisingly late in the series\n\nSo the most famous one of these is the Blackfyres not being mentioned until Book 3, and it seems likely that Robert's Targ grandmother was invented during the writing of AFFC. Are there any others, confirmed or speculated? ",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoilers published] Thoughts on Craster being Bloodraven's bastard?\n\nIve heard this theory thrown around in Glidus/AltShwiftX streams... but I'm interested in how many folks buy into it. Or if anyone has debunked this theory.\n\nPersonally, I see parallels between Aegon IV the Unworthy and Craster. Brutal, sadistic, utterly selfish to the detriment of the whole of Westeros, loves incest etc. Would make sense if Aegon IV was Craster's grandfather.\n\nSpoilers below!\n\nIf anyone was unaware of the theory goes that at some point after BR dissapeared north of the wall he fathered a son and he grew up to be Craster. 'Evidence' as such being that he acts quite targaryen and is very sensitive to his bastardy, has a taste for wine. We know his father was a night watchman and his mother was from whitetree. Where there is a massive weirwood, so makes sense that BR would be sniffing around in the area.\n\nIts even on his Wiki page, which is unusual for theories.\n\nI'm relatively new to the fandom, so interested in the general reception of this theory.\n\nThoughts? Is this basically cannon? Or has anyone debunked this?",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoilers EXTENDED] Why didn't Edmure escape with the Blackfish while surrendering Riverrun?\n\nTowards the end of AFFC, we learn that Jaime sends Edmure inside Riverrun, and then Edmure takes a whole day to surrender the castle, before which the Blackfish as escaped by swimming across the river floating quietly downstream. Jaime doesn't find out the Blackfish is missing till the next morning after the castle gates are opened. If one man could escape, why not two? That couldn't be too difficult, if an old man was able to manage it. Also, before sending him into Riverrun, Jaime leaves Edmure alone with the singer Tom of Sevenstreams for a while, and there are popular fan theories that Tom is an agent working for the BWB. Maybe he told Edmure about some rescue plans? \n\nAnd then Edmure went inside Riverrun and told the Blackfish about it, and since they took so long to strike the Direwolf banners and open the gates, they both could have escaped together? Did both of them decide that it was important for their plan for Edmure to assume his captivity for now, but the Blackfish must escape to gather his forces with the BWB, or even ride to the Vale to obtain help from the Vale lords? ",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(SPOILERS MAIN) Is it plausible Pycelle was poisoning Elia's womb?\n\nPycelle is loyal as fuck to Tywin. I think that's because he's a son of Rohanne and Eustace Osgrey (because otherwise Jason Lannister (Tytos' brother) would be Lord Webber, and so his kids wouldn't be at Casterly Rock for Tywin to fall in love with Joanna). \n\nBut anyways, that's neither here or there.\n\nSo when Elia was named Queen, Tywin was obviously spiteful. Now Rhaegar probably moved with Elia to Dragonstone because he didn't trust Pycelle. But Elia was weak and feeble, and needed to go to King's Landing, before going to Harrenhal for the wedding. \n\nSo Pycelle, at a \"routine\" check-up, envious that Tywin had just fled King's Landing, could have easily poisoned Elia's womb, which caused Aegon to be born so traumatically, which meant Rhaegar needed Lyanna for his prophecy baby Visenya.\n\n  \nSo Pycelle may have actually started Robert's Rebellion, and the War of the Five Kings, however indirectly.",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "Which of Jaehaerys's brothers is Barristan Selmy talking about in ASOS? (Spoilers Published)\n\n>\"Not now,\" she agreed. \"One day. One day you must tell me all. The good and the bad. There is some good to be said of my father, surely?\"\n\n>\"There is, Your Grace. Of him, and those who came before him. Your grandfather Jaehaerys and his brother, their father Aegon, your mother . . . and Rhaegar. Him most of all.\" - Daenerys VI, A Storm of Swords\n\nCuriously, Barristan only mentions one brother even though Jaehaerys had two, Duncan and Daeron.\n\nCat does think of Jenny and Duncan when she passes through Oldstones so we know for a fact Duncan was invented already in ASOS.\n\nAt first, I was thinking it's most likely Daeron Barristan thinks of since he was a warrior who died quelling a rebellion while Duncan the Small was a useless guy who started another rebellion. But then this whole passage is about the \"good and bad\" of the family which still includes Duncan and his vices. Or it's possible Barristan just doesn't think Duncan is worth talking about.",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoiler Main) Did Brandon Stark ...\n\nslept with Barbrey after he betrothed to Catelyn? Or did he love Catelyn? If him and Ashara true does that mean he betrayed both Catelyn and Ned?",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Main) What's everyone's favorite lesser known House Words\n\nHere are some of mine:\n\nHouse Bolton- Our Blades are Sharp (shit goes hard)\n\nHouse Codd- Though All Men Do Despise Us\n\nHouse Martell- Unbowed, Unbent, Unbroken\n\nHouse Plumm- Come Try Me \n\nHouse Tarly- First in Battle",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) Have the gods punished the man that forged Robert\u2019s warhammer? Or has the man punished himself?\n\nAccording to the book, Donal Noye, the man who forged the weapon that ultimately killed Rhaegar, lost his arm after getting an axe wound during the siege at Storm\u2019s End and, somehow consequently, left for the Night\u2019s Watch. \n\nI do wonder if losing the arm made Donal to feel morally guilty of regicide hence his decision to go for the Wall or the guilt was already so unbearable that he actually chopped his arm himself\u2026 ",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) Why the meltdown on play Rhaella\u2019s treatment of the Starks? Is not like Catelyn, or Cersei, or Alysanne herself would have acted much differently if confronted with\u2026\n\n\u2026a man showing up on their doorstep asking for their  son to die. ",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Main) Rhaegar Targaryen and the prince that was promised\n\nRhaegar Targaryen probably dedicated his life to prophey, trying to firgue out who is tptwp.\n\nTurns out. there are 3 endings.\n\n1. He is the father of tptwp. He and Lyanna tricked the right condition for it to happen. All his actions turned out to be all right in the end.\n\n  \n2. He is the brother of tptwp , it has nothing to do with his action. But he serves as moral guidances and family legends for tptwp. tptwp literally looks up upon her elder brother, asking herself What would Rhaegar do?\n\n  \n3. He is tptwp, through his death, Targaryen left and Westeros was saved .\n\n  \nNo matter which scenario, Rhaegar Targaryen is very very important to prophecy.\n\nNo matters the truth, I think we all can commend that spirit, that courage to take on the world\u2019s responsibility on himself,( eventually it crushed him and he went hippie, but still)\n\nHe is the \u201cMan in the Arena\u201d!",
+      "gold": "analysis",
+      "predicted": "opinion"
+    },
+    {
+      "text": "[Spoilers EXTENDED] What if it was revealed that Daemon Blackfyre was the son of Baelor the Blessed in-universe?\n\nLets say some time before her death, Daena reveals her son Daemon is actually the son of Baelor the Blessed.  \nHow would everyone react?  \nWould they reject it and claim she's lying? Or would they be more inclined to support Daemon.  \nHow would Aegon IV react if he were alive?   \nOr if this confession came after he died and Daemon already got legitimized.",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers extended) what is the most badass title in all of the series in your opinion?\n\nHonesty i have several picks myself.\n\nSword of the morning \n\nLord reaper of pyke (ironic considering i despise the ironborn. A literal nation of scums)\n\nLord Commander of the nights watch\n\nNights king\n\nBrandon the burner\n\nBrandon ice eyes\n\nBrandon the shipwright \n\nBran the builder",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoilers Main] A crackship I genuinely might be the first person to come up with\n\nSo we know Val. Wildling princess(kinda) pretty cool side character who is often shipped with Jon. Not as often as Dany but often. And we know Jhogo you know Dany's bloodrider, the one most people remember. He's also shipped with Dany. Again not as much as Jon but it's got it's fans\n\nNow I'm a firm shipper of Snowstorm. I think Jon and Dany are effectively soulmates and really I think they're practically made for eachother. So I thought: \"Wait so I ship Jon and Dany together and they've often shipped with Val and Jhogo respectively... What if we also ship Val and Jhogo together?\"\n\nAnd I thought about it and realised... I kinda love this. I don't know I think it'd be a pretty hilarious dynamic considering their cultures and especially the fact they don't even speak the same language. I don't know I just think it'd be cute what do you think?",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Extended) A very nitpicky question about the end of Storm and Jon\n\nWhen Ser Alliser and Janos Slynt send Jon to \u201ctreat\u201d with Mance, why would they let him bring a priceless weapon like Longclaw? He was never meant to return, meaning this would be handing Longclaw to the wildlings. \n\nDid they sort of just forget about the sword? Should I just stop rereading this series? All answers are welcome.",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoilers Extended] What is G.R.R.M stuck on?\n\nBased on Martin's updates that he has about 1000 manuscript pages, I imagine that he has successfully written the following:\n\n1. The battle of Mereen and its Aftermath\n\n2. Whatever happens to Dany in the Dothraki Sea\n\n3. The battle of Winterfell\n\n4. The Aftermath of the Mutiny at Castle Black + Jon Snow's fate\n\n5. The Trial of Cersei and Margaery\n\n6. The taking of Storm's End by Young Griff's forces\n\nSo I was wondering what is he stuck on? My gut feeling is that the plot line in the east is too complex and getting the characters to Westeros with the proper dynamics and character growth. Has GRRM mentioned something to hint in any direction?\n\nSorry for typos (Writing on my phone) and sorry if this is a repeat post, I haven't seen anything exactly like this.",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoiler main) If Littlefinger loved and cared for Catelyn, and has his influence on lady Arryn, I think the best thing he could have done is get Vale involved, and ultimately, help Robb's campaign. Why didn't he? Looking at his plans retroactively, he would have a lot to gain if he secretly support",
+      "gold": "opinion",
+      "predicted": "question"
+    },
+    {
+      "text": "[spoilers extended] Would Cersei be attracted to Daenerys if she met her?\n\nShe\u2019s young and looks like rhaegar, and as we\u2019ve seen in feast Cersei isn\u2019t completely immune to the charms of women. So besides probably wanting to kill her, would Cersei think she\u2019s low key bad? ",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "Why Didnt Aegon the conquerer Give celtigars any power [Spoilers MAIN]\n\nThe conquerer why didnt give celtigars any position of power   \nOrys just mere warior get Storms End   \nVelaryons are almost a branch of Targaryens   \nMaster at arms of Dragonstone get harrenhal   \nBut celtigars are first to support Aegon but didnt get any realm power position or power no royal marriages no land no big prize   \nI think they at least deserve the Lannisport ",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "If you switch out Jaime for another member of the Kingsguard the day KL got sacked, do you think they make the same decision? [Spoilers EXTENDED]\n\nBasically as the title implies. I know the fandom jokes about Barristan \u201cthe Bystander\u201d and \u201cFraud of the Morning\u201d and all that. But really think, if Barristan Selmy was in the throne room that day and Aerys tells him he\u2019s gonna burn down the city, do you think he lets it happen? I mean this is an entire city of people, could him or an Arthur Dayne live with that level of bloodshed? \n\nTo be clear, this isn\u2019t an attempt to minimize the courageous thing Jaime did. I\u2019m just more curious how far the loyalty of a lot of the KG guys were, and if anyone thinks they would hit a breaking point similar to Jaime. Would they just kill the pyromancers and leave Aerys alive to be detained? Or would any of them follow their orders and allow the city to be blown up?",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "(Spoilers Main) Could any Starkaryen be TPTWP\n\nGRRM said in an interview that Baelor's death at the Ashford tourney greatly changed the trajectory of Westeros. Which got me thinking, what if Baelor \\*and his line\\* survived.\n\n\\- We get King Baelor, who (also according to GRRM) would be a good ruler. The crown then passes to his grand/son in this fictional scenario. No important Targaryens die in the plague ;)\n\n\\- We do NOT get the tragedy at Summerhall, as Prince Egg wouldn't have the same resources as King Aegon V to pull that one off\n\n\\- We do NOT get Mad King Aerys II\n\nImagine it's 281 AC and a stronger, more beloved Targaryen holds the throne. Prince Daeron falls in love with Lyanna Stark at the tourney at Harrenhall.\n\nDo we still get the Prince That Was Promised? Does it \\*have\\* to be Rhaegar x Lyanna, or could any Starkaryen fit the bill?",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "[Spoiler Main] What if Eddard and Robert was Warded in High Garden with Ollena Tyrell\n\nAs the title asks, what would happen, how would the STAB alliance change? How what would a Ned Stark taught by Ollena Tyrell look like? Would Benjin take Ned's place in the Erire?",
+      "gold": "question",
+      "predicted": "question"
+    }
+  ]
+}

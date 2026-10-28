@@ -344,6 +344,13 @@ Codex also helped collect the public posts and test the taxonomy. The eight
 synthetic boundary examples are excluded from `labels.csv`; dataset texts were
 collected from the public Reddit archive, with source URLs in the notes.
 
+**Unit 6, Milestone 1:** Codex checked the committed held-out split and existing
+label definitions, recorded an AI-generated prediction before the baseline run
+(with prior access to the saved trained scores disclosed), executed both local
+baseline prompts, and drafted the comparison and interpretation from the saved
+results. No dataset labels, taxonomy, criteria, or training settings were
+changed for this milestone.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -358,10 +365,13 @@ collected from the public Reddit archive, with source URLs in the notes.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.433 | 0.600 | +0.167 |
+| Macro F1 | 0.202 | 0.449 | +0.248 |
+| F1 — `analysis` | 0.605 | 0.722 | +0.118 |
+| F1 — `opinion` | 0.000 | 0.000 | +0.000 |
+| F1 — `question` | 0.000 | 0.625 | +0.625 |
+
+Difference is trained minus baseline; values are rounded to three decimals.
 
 **What I predicted before I looked:**
 
@@ -374,6 +384,45 @@ it is not a prediction made blind to the trained scores.
      prediction made afterwards isn't one. -->
 
 **What the gap actually means:**
+
+The definition-based zero-shot baseline got 13/30 posts right (43.3%); the
+trained model got 18/30 right (60.0%), a gain of 16.7 percentage points.
+The prediction about `analysis` F1 held on this split (0.722 versus 0.605),
+but that gain needs context: the baseline called all 30 posts `analysis`.
+The trained model also recognized five of the nine `question` posts, while
+neither model recognized any of the eight `opinion` posts. Fine-tuning improved
+the measured results on seed 42, but it has not learned all three categories.
+This is one small held-out split, not evidence that the gain holds across
+seeds; that will be tested in Milestone 2.
+
+**Run details and fairness:** On October 27, 2026, Codex ran the project's
+`.venv` Python with `python baseline.py --trained results.json`.
+`facebook/bart-large-mnli` performed zero-shot classification locally on CPU,
+using only the three existing one-line definitions from
+`label_definitions.txt`, copied from the README. The script places each
+definition in its hypothesis template; it does not include the README's
+examples or separate decision rules. No training was performed. Both models
+were scored on all 30 unchanged posts in the committed `test_split.csv`
+(13 analysis, 8 opinion, 9 question); no random-sample fallback or cap was used.
+The definitions-based run is the reported baseline and is saved in
+[baseline_results.json](baseline_results.json), including each prediction.
+
+**Definitions versus bare names:** I also ran
+`python baseline.py --definitions baseline_no_definitions.txt --out baseline_results_bare_names.json --trained results.json`.
+The deliberately nonexistent definitions path triggers the script's bare-name
+fallback without changing the real definitions file. On the same 30 posts:
+
+| Prompt | Accuracy | Macro F1 | Analysis F1 | Opinion F1 | Question F1 |
+|---|---:|---:|---:|---:|---:|
+| Written definitions (reported baseline) | 0.433 | 0.202 | 0.605 | 0.000 | 0.000 |
+| Bare label names (comparison only) | 0.300 | 0.158 | 0.000 | 0.000 | 0.474 |
+
+Definitions raised accuracy by 13.3 percentage points (four posts), but changed
+the baseline from predicting `question` for 29 posts and `opinion` for one
+to predicting `analysis` for all 30. The higher accuracy largely reflects the
+larger analysis class rather than successful separation of the categories. The bare-name predictions
+are saved separately in
+[baseline_results_bare_names.json](baseline_results_bare_names.json).
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
 
