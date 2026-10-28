@@ -458,19 +458,20 @@ matrix are saved in
 [results_three_seeds_before.json](results_three_seeds_before.json).
 
 The five original criteria below come from [criteria.md](criteria.md).
-Measurements are filled now; verdicts and evidence-backed diagnoses are
-reserved for Milestone 4 after the agreement check. Minimum label F1 summarizes
+Milestone 4 verdicts use the full-precision saved values and require each
+rate target to hold on every seed. Labeling-cause diagnoses remain provisional
+until the staff agreement check is available. Minimum label F1 summarizes
 criterion 3; the next table shows every label separately. Criterion 4 uses the
 same complete dataset for all seeds: 200 rows, all three labels present,
 largest class `analysis` at 83/200 = 0.415.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1. Held-out accuracy | ≥ 0.70 | 0.600 | 0.400 | 0.567 | Pending Milestone 4 |
-| 2. Held-out macro F1 | ≥ 0.65 | 0.449 | 0.190 | 0.437 | Pending Milestone 4 |
-| 3. Minimum F1 across all three labels | ≥ 0.60 | 0.000 | 0.000 | 0.000 | Pending Milestone 4 |
-| 4. Largest dataset label share | ≤ 0.50; ≥ 200 rows; all labels | 0.415 | 0.415 | 0.415 | Pending Milestone 4 |
-| 5. Confidence accuracy gap | ≥ 0.20 | 0.100 | 0.800 | 0.300 | Pending Milestone 4 |
+| 1. Held-out accuracy | ≥ 0.70 | 0.600 | 0.400 | 0.567 | MISSED |
+| 2. Held-out macro F1 | ≥ 0.65 | 0.449 | 0.190 | 0.437 | MISSED |
+| 3. Minimum F1 across all three labels | ≥ 0.60 | 0.000 | 0.000 | 0.000 | MISSED |
+| 4. Largest dataset label share | ≤ 0.50; ≥ 200 rows; all labels | 0.415 | 0.415 | 0.415 | MET |
+| 5. Confidence accuracy gap | ≥ 0.20 | 0.100 | 0.800 | 0.300 | MISSED |
 
 ### Scores across the three seeds
 
@@ -542,25 +543,95 @@ matrix exactly reproduce the saved Unit 5 result.
 <!-- MET or MISSED against LAST UNIT's target. The target has to hold across
      all three seeds, not turn up sometimes. -->
 
+**Milestone 4 verdicts, October 27, 2026:** The original criteria are unchanged.
+Criteria 1, 2, 3, and 5 must pass separately on all three seeds. Criterion 4
+checks the complete dataset. Averages and rounded display values were not used
+to rescue a failed trial. Evidence comes from
+[results_three_seeds_before.json](results_three_seeds_before.json),
+`labels.csv`, and the saved training outputs in `takemeter.ipynb`.
+
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Held-out accuracy | ≥ 0.70 on every seed | MISSED | Seeds 42/7/2024: 0.600 / 0.400 / 0.567; all are below 0.70. |
+| 2 | Held-out macro F1 | ≥ 0.65 on every seed | MISSED | 0.449 / 0.190 / 0.437; all are below 0.65. |
+| 3 | Every label's held-out F1 | ≥ 0.60 on every seed | MISSED | Opinion F1 is 0 on every seed; seed 7 also has analysis F1 0.571 and question F1 0.000. |
+| 4 | Complete-dataset balance | Largest share ≤ 0.50; ≥ 200 rows; all three labels | MET | 200 collected posts: analysis 83 (41.5%), opinion 54 (27.0%), question 63 (31.5%); all three are present. |
+| 5 | Confidence accuracy gap | ≥ 0.20 on every seed | MISSED | Gaps are 0.100 / 0.800 / 0.300; seed 42 fails, so the overall criterion fails. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**1. Accuracy — missed because entire categories are being lost.** All eight
+held-out `opinion` posts are wrong on each seed. On seed 42, six go to
+`analysis` and two to `question`; four additional true questions go to
+`analysis`. Seed 7 predicts `analysis` for every post, losing all eight opinions
+and all ten questions. That explains the measured 12, 18, and 13 errors out
+of 30 on seeds 42, 7, and 2024. The observed failure is a strong preference for
+`analysis` and unreliable category separation, rather than a few isolated
+borderline mistakes. Small training sets and incomplete learning under the
+current settings are plausible contributors; labeling inconsistency is not
+established without the agreement evidence.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+**2. Macro F1 — missed because `opinion` contributes zero and `question` is
+unstable.** Macro F1 gives equal weight to all three labels. Opinion F1 is
+0.000 on all three trials, while question F1 varies from 0.625 to 0.000 to
+0.667. Analysis F1 also varies (0.722 / 0.571 / 0.645), so it cannot compensate
+for the missing category. The analysis/opinion boundary requires identifying
+whether a specific fact actually supports a claim; both categories can discuss
+the same characters and scenes. Difficulty learning that distinction from
+few examples is a hypothesis consistent with the directional errors, not a
+confirmed explanation of their origin.
 
+**3. Per-label F1 — missed because the model never chooses `opinion` on held-out
+posts, and seed 7 also loses `question`.** Opinion has 54 examples overall
+and 38 training examples in every split, versus 57–58 analysis and 43–44
+question training examples. It is the thinnest category, but it is neither
+absent nor represented by only one or two examples. Every matrix has an empty
+opinion prediction column, giving opinion zero recall and zero F1. Seed 7
+also falls below the floor for both other labels. The modest class imbalance
+may encourage an analysis preference, but does not by itself establish why
+opinion is never selected. More targeted examples or a training change could
+test different explanations; no change has been made in this milestone.
+
+**5. Confidence gap — missed because seed 42's ranking separates correct
+predictions too weakly.** Its most-confident third gets 7/10 correct and its
+least-confident third gets 6/10: a 0.10 gap instead of the required 0.20.
+Mean maximum softmax scores are also close for correct and incorrect
+predictions (about 0.437 versus 0.414). Weak separation of learned categories
+is consistent with that overlap, but aggregate scores cannot identify the
+particular posts responsible. The 0.80 gap on seed 7 does not fix this miss:
+that model still predicts only analysis. A useful confidence ranking within
+one collapsed model does not establish recognition of all three categories.
+Each third contains only ten posts, making this criterion sensitive to one
+or two correct predictions changing groups.
+
+**Shared training evidence and limits:** Each trial uses 139 training posts,
+batch size 16, and three epochs: nine batches per epoch and 27 optimizer
+updates total. The classification head is newly initialized for the task.
+Average training loss across the run is about 1.031 / 1.039 / 1.031, compared
+with approximately 1.099 for uniform three-class probabilities. These are
+run-average losses, not final training-set accuracy. They suggest limited
+learning during this short schedule, but do not prove that more epochs will
+help. Seed 7's validation loss decreases each epoch while its test predictions
+still collapse to analysis; the 20-point test-accuracy spread shows strong
+sensitivity to the split and training randomness. The current evidence
+supports testing a single improvement, rather than declaring a model ceiling
+or attributing the problem to CPU hardware.
+
+**Agreement evidence still outstanding:** All 30 first-pass staff-set labels
+have been reviewed and accepted, but `data/staff_labels.csv` and
+`agreement_results.json` are not available. Acceptance of the first pass is
+not a measured agreement rate. Consequently, the observed model failures and
+all five verdicts are established, while the labeling-versus-model attribution
+remains provisional. Once the staff file arrives, adjudicate every disagreement
+and check whether rule-application errors cluster on evidence versus unsupported
+claims. That could support a consistency hypothesis; ambiguous or uncovered
+rules would support a different diagnosis. The staff running-forum taxonomy
+differs from the project's fandom taxonomy, so even that comparison informs
+consistency without directly auditing all 200 training labels. The
+agreement-backed portion of Milestone 4 remains pending Milestone 3's results.
+
+**Criterion revisions:** None. All five original criteria were measurable;
+the four missed targets have not been lowered or rewritten.
 
 
 ---
