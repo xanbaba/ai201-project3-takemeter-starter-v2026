@@ -733,21 +733,120 @@ that the current training schedule is insufficient. They do not assume that
 label inconsistency has been ruled out; the staff agreement check is pending.
 Both stages will be reported even if either makes performance worse.
 
-### Run Log — After
+### Run Log — Intermediate: six epochs, original learning rate
+
+The first change doubles epochs to 6 while retaining learning rate `2e-5`.
+All three trials completed on CPU. Results:
+[results_three_seeds_epochs6.json](results_three_seeds_epochs6.json).
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Held-out accuracy | ≥ 0.70 | 0.667 | 0.733 | 0.633 | MISSED |
+| 2. Held-out macro F1 | ≥ 0.65 | 0.592 | 0.626 | 0.582 | MISSED |
+| 3. Minimum F1 across all three labels | ≥ 0.60 | 0.400 | 0.222 | 0.364 | MISSED |
+| 4. Largest dataset label share | ≤ 0.50; ≥ 200 rows; all labels | 0.415 | 0.415 | 0.415 | MET |
+| 5. Confidence accuracy gap | ≥ 0.20 | 0.100 | 0.100 | 0.200 | MISSED |
+
+### Run Log — After: six epochs, higher learning rate
+
+The second change retains 6 epochs and raises learning rate to `5e-5`.
+Section 6 ran with `RUN_LABEL = "after"`. All three trials completed on CPU.
+Results: [results_three_seeds_after.json](results_three_seeds_after.json).
+The original five-row before log remains above. All verdicts use unrounded
+values and require each rate target to hold on every seed. Criterion 4 is
+unchanged because the dataset is unchanged.
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Held-out accuracy | ≥ 0.70 | 0.700 | 0.600 | 0.533 | MISSED |
+| 2. Held-out macro F1 | ≥ 0.65 | 0.697 | 0.566 | 0.529 | MISSED |
+| 3. Minimum F1 across all three labels | ≥ 0.60 | 0.588 | 0.250 | 0.444 | MISSED |
+| 4. Largest dataset label share | ≤ 0.50; ≥ 200 rows; all labels | 0.415 | 0.415 | 0.415 | MET |
+| 5. Confidence accuracy gap | ≥ 0.20 | 0.300 | 0.600 | 0.100 | MISSED |
+
+### Before, intermediate, and after on the same seed-specific posts
+
+Each seed retains exactly its original train/validation/test membership.
+Different seeds still have different held-out posts. All stages start from
+`distilbert-base-uncased`; none continues a previous fine-tuned checkpoint.
+The original settings are 3 epochs at `2e-5`; the middle stage is 6 at `2e-5`;
+the final stage is 6 at `5e-5`. Batch size is 16 and maximum length 320 for all.
+
+| Stage | Seed | Accuracy | Macro F1 | Analysis F1 | Opinion F1 | Question F1 | Confidence gap |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Original | 42 | 0.600 | 0.449 | 0.722 | 0.000 | 0.625 | 0.100 |
+| Original | 7 | 0.400 | 0.190 | 0.571 | 0.000 | 0.000 | 0.800 |
+| Original | 2024 | 0.567 | 0.437 | 0.645 | 0.000 | 0.667 | 0.300 |
+| Epochs only | 42 | 0.667 | 0.592 | 0.788 | 0.400 | 0.588 | 0.100 |
+| Epochs only | 7 | 0.733 | 0.626 | 0.786 | 0.222 | 0.870 | 0.100 |
+| Epochs only | 2024 | 0.633 | 0.582 | 0.714 | 0.364 | 0.667 | 0.200 |
+| Final | 42 | 0.700 | 0.697 | 0.733 | 0.769 | 0.588 | 0.300 |
+| Final | 7 | 0.600 | 0.566 | 0.741 | 0.250 | 0.706 | 0.600 |
+| Final | 2024 | 0.533 | 0.529 | 0.667 | 0.444 | 0.476 | 0.100 |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+**Longer training helped; the additional learning-rate increase hurt overall.**
+The first change improved accuracy and macro F1 on all three seeds. The second
+change improved seed 42 but reduced both measures on seeds 7 and 2024. The
+six-epoch run at the original learning rate was the stronger of the two
+experiments by mean accuracy and mean macro F1. The notebook retains the final
+tested settings, and both result sets are preserved.
 
+| Seed | Before: 3 epochs, `2e-5` | Intermediate: 6 epochs, `2e-5` | After: 6 epochs, `5e-5` |
+|---|---:|---:|---:|
+| 42 | 60.0% | 66.7% | 70.0% |
+| 7 | 40.0% | 73.3% | 60.0% |
+| 2024 | 56.7% | 63.3% | 53.3% |
+| Mean accuracy (descriptive only) | 52.2% | 67.8% | 61.1% |
+
+**First change, longer training:** Accuracy changed by +6.7, +33.3, +6.7 percentage points on seeds 42/7/2024, respectively. Mean accuracy changed by +15.6 points and mean macro F1 by +0.241. Accuracy improved on 3/3 seeds, declined on 0/3, and was unchanged on 0/3.
+
+**Second change, higher learning rate at six epochs:** Accuracy changed by +3.3, -13.3, -10.0 percentage points on seeds 42/7/2024, respectively. Mean accuracy changed by -6.7 points and mean macro F1 by -0.003. Accuracy improved on 1/3 seeds, declined on 2/3, and was unchanged on 0/3.
+
+**Both changes versus the original:** Accuracy changed by +10.0, +20.0, -3.3 percentage points on seeds 42/7/2024, respectively. Mean accuracy changed by +8.9 points and mean macro F1 by +0.238. Accuracy improved on 2/3 seeds, declined on 1/3, and was unchanged on 0/3.
+
+Original: opinion was predicted for 0 / 0 / 0 test posts on seeds 42/7/2024; accuracy spread was 20.0 percentage points.
+
+Epochs only: opinion was predicted for 2 / 1 / 3 test posts on seeds 42/7/2024; accuracy spread was 10.0 percentage points.
+
+Final: opinion was predicted for 5 / 8 / 10 test posts on seeds 42/7/2024; accuracy spread was 16.7 percentage points.
+
+After both changes, criterion 4 is MET; criteria 1, 2, 3, 5 are MISSED.
+Improved averages do not override a failed seed. These are small,
+reused development comparisons after inspecting earlier test results; they
+do not establish performance on a new untouched evaluation set. The staff
+agreement check remains pending, so these training experiments do not resolve
+labeling consistency. No extra parameter search, relabeling, or new examples
+were introduced.
+
+### Final confusion matrices
+
+Rows are true labels; columns are predictions. Each seed contains 30 posts.
+
+**Seed 42**
+
+| true \ predicted | analysis | opinion | question |
+|---|---|---|---|
+| **analysis** | 11 | 0 | 2 |
+| **opinion** | 2 | 5 | 1 |
+| **question** | 4 | 0 | 5 |
+
+**Seed 7**
+
+| true \ predicted | analysis | opinion | question |
+|---|---|---|---|
+| **analysis** | 10 | 2 | 0 |
+| **opinion** | 5 | 2 | 1 |
+| **question** | 0 | 4 | 6 |
+
+**Seed 2024**
+
+| true \ predicted | analysis | opinion | question |
+|---|---|---|---|
+| **analysis** | 7 | 2 | 4 |
+| **opinion** | 1 | 4 | 3 |
+| **question** | 0 | 4 | 5 |
 
 
 ---
