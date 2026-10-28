@@ -192,16 +192,17 @@ Borderline: “Just realised” centers an immediate personal discovery about ac
 
 The post reports the writer’s immediate regret after registering and paying, without a general claim.
 
-## Remaining work
+## Comparison completed — October 28, 2026
 
-1. Obtain `data/staff_labels.csv` from the course staff. Keep the accepted
-   first-pass labels unchanged for the comparison.
-2. Run `.venv\Scripts\python.exe agreement.py`.
-3. Check that all 30 posts were compared, with no missing or extra texts.
-4. For every disagreement, record the unchanged post, both labels, a final
-   call with a reason grounded in the staff rules, and category (a), (b), or (c).
-5. Report the actual rate and disagreement pattern in the README, and commit
-   `agreement_results.json` together with the report.
+The staff file arrived after the first-pass labels were saved and accepted.
+`python agreement.py` compared all 30 posts: **29 agreed, 1 disagreed (96.7%)**,
+with no missing or extra posts. See `agreement_results.json` for the arithmetic
+and the README Agreement Report for the full two-sided adjudication of sp_014.
 
-The agreement rate and disagreement findings remain unmeasured until the
-staff answer key is supplied.
+The accepted `analysis` label is retained as defensible under rule 1; staff
+chose `hot_take`. This is category (c), ambiguity with a defensible first-pass
+reading. Totals: (a) 0, (b) 0, (c) 1. The original first-pass CSV and reasons
+above remain unchanged, and agreement is not recomputed from adjudicated labels.
+
+This separate staff exercise does not verify the 180 training annotations that
+still carry human-review-pending notes.

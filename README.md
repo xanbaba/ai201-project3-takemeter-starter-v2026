@@ -159,7 +159,8 @@ title and body before labeling; do not infer evidence from replies or links.
 
 The definitions were stress-tested against eight synthetic boundary posts and
 a two-sided argument for the real borderline post. Synthetic examples are not
-part of the dataset. Independent human agreement has not been measured.
+part of the dataset. Independent agreement on the 200 fandom labels has not been measured.
+The separate staff-taxonomy agreement check is reported below.
 
 
 
@@ -216,7 +217,10 @@ or whitespace-normalized duplicate texts or repeated nonempty bodies.
 | **Total** | **200** | **100%** |
 
 The largest share meets both the assignment's 70% cap and criterion 4's 50%
-cap. Counts may change after human review; recompute them before training.
+cap. These are the counts in the unchanged file used for all reported runs.
+Human review of 180 labels is still pending; the experiments therefore measure
+performance against provisional annotations, not a fully verified dataset.
+Any later review must be versioned separately and the counts recomputed.
 
 **Three hard cases**
 
@@ -301,8 +305,10 @@ using the project's `.venv` kernel. Section 2 reported no dataset problems or
 warnings. `results.json` saves the held-out metrics and records `device: cpu`,
 `device_name: CPU`, `torch_version: 2.14.1+cpu`, and `max_length: 320`.
 `test_split.csv` saves the same 30 held-out posts for next unit's baseline.
-Sections 6–7 and the baseline/agreement runs were not executed. The original
-acceptance targets were kept unchanged; detailed evaluation belongs to Unit 6.
+At the end of Unit 5, sections 6–7 and the baseline/agreement runs had
+not been executed. Unit 6 has since completed them: see the baseline table,
+three-seed logs, and agreement report below. The original acceptance targets
+remain unchanged.
 
 
 ---
@@ -459,8 +465,9 @@ matrix are saved in
 
 The five original criteria below come from [criteria.md](criteria.md).
 Milestone 4 verdicts use the full-precision saved values and require each
-rate target to hold on every seed. Labeling-cause diagnoses remain provisional
-until the staff agreement check is available. Minimum label F1 summarizes
+rate target to hold on every seed. The completed staff check informs the
+diagnoses below; consistency of the training labels remains unverified.
+Minimum label F1 summarizes
 criterion 3; the next table shows every label separately. Criterion 4 uses the
 same complete dataset for all seeds: 200 rows, all three labels present,
 largest class `analysis` at 83/200 = 0.415.
@@ -491,8 +498,9 @@ Seed 7 predicts `analysis` for all 30 posts; none of the three models predicts
 this training setup. Because the seed changes both the split and training
 randomness, these runs do not isolate which source drives the variation.
 The largest dataset class is only 41.5%, so severe overall class imbalance
-alone does not explain the collapse. Whether inconsistent labels contribute
-requires the agreement check; the matrix alone cannot establish that cause.
+alone does not explain the collapse. The staff check is discussed below;
+neither it nor the matrix directly establishes consistency of this separate
+training taxonomy.
 
 All test sets contain each label. Exact per-label test supports and
 precision/recall are recorded below (P = precision, R = recall):
@@ -569,7 +577,7 @@ of 30 on seeds 42, 7, and 2024. The observed failure is a strong preference for
 `analysis` and unreliable category separation, rather than a few isolated
 borderline mistakes. Small training sets and incomplete learning under the
 current settings are plausible contributors; labeling inconsistency is not
-established without the agreement evidence.
+established by the separate staff agreement check.
 
 **2. Macro F1 — missed because `opinion` contributes zero and `question` is
 unstable.** Macro F1 gives equal weight to all three labels. Opinion F1 is
@@ -617,18 +625,26 @@ sensitivity to the split and training randomness. The current evidence
 supports testing a single improvement, rather than declaring a model ceiling
 or attributing the problem to CPU hardware.
 
-**Agreement evidence still outstanding:** All 30 first-pass staff-set labels
-have been reviewed and accepted, but `data/staff_labels.csv` and
-`agreement_results.json` are not available. Acceptance of the first pass is
-not a measured agreement rate. Consequently, the observed model failures and
-all five verdicts are established, while the labeling-versus-model attribution
-remains provisional. Once the staff file arrives, adjudicate every disagreement
-and check whether rule-application errors cluster on evidence versus unsupported
-claims. That could support a consistency hypothesis; ambiguous or uncovered
-rules would support a different diagnosis. The staff running-forum taxonomy
-differs from the project's fandom taxonomy, so even that comparison informs
-consistency without directly auditing all 200 training labels. The
-agreement-backed portion of Milestone 4 remains pending Milestone 3's results.
+**Agreement evidence, completed October 28, 2026:** The unchanged first-pass
+labels agree with staff on 29/30 posts (96.7%). The only disagreement is
+`analysis` versus `hot_take` on sp_014, the evidence-versus-decoration boundary.
+The adjudication below retains analysis as a defensible reading of the written
+rule, category (c). Pile totals are (a) 0, (b) 0, (c) 1. This identifies one
+ambiguous boundary, not a demonstrated pattern of applying a clear rule loosely.
+It would be unjustified to blame all model errors on annotation inconsistency
+from this result. Conversely, the high rate does not validate the 200 fandom
+labels: it concerns different posts and a different taxonomy.
+
+The model matrices repeatedly confuse unsupported opinions with supported
+analysis, so the staff disagreement flags a related distinction worth auditing.
+The measured training intervention provides additional evidence: doubling
+epochs improved accuracy and macro F1 on every seed, while increasing the
+learning rate afterward hurt accuracy on two seeds. This supports the original
+short training schedule as a contributor; it does not rule out data problems.
+In particular, 180/200 training annotations still have human review pending.
+Their correctness is unverified, so model scores and causal conclusions remain
+conditional on those provisional labels. No training labels have been changed
+after the fact, and no extra improvement run has been added.
 
 **Criterion revisions:** None. All five original criteria were measurable;
 the four missed targets have not been lowered or rewritten.
@@ -644,63 +660,82 @@ the four missed targets have not been lowered or rewritten.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Milestone 3 status: all 30 labels reviewed and accepted; staff answer key
-pending.** This repository is a test run of the course by its author. On
-October 27, 2026, the course author confirmed agreement with all 30 first-pass
-labels in [my_staff_labels.csv](my_staff_labels.csv), before the staff answer
-key was available. The original post texts are preserved exactly.
+**Milestone 3 status: comparison and adjudication complete.** This repository
+is a course-author test run. All 30 first-pass labels were accepted on October
+27, before the answer key was available. On October 28 the supplied
+`(SEND AFTER THEY ARE DONE) data_staff_labels.csv` was copied unchanged to
+[data/staff_labels.csv](data/staff_labels.csv). The first-pass
+[my_staff_labels.csv](my_staff_labels.csv) was not changed after the key arrived.
 
-The labels use the staff definitions of `analysis`, `hot_take`, and `reaction`.
-Counts: 11 analysis, 9 hot_take, 10 reaction. Per-post reasons and borderline
-cases are documented in [staff_labeling_notes.md](staff_labeling_notes.md).
+`python agreement.py` compared all 30 exact source texts, with no missing or
+extra posts. It wrote [agreement_results.json](agreement_results.json).
 
-**Agreement rate:** Not yet measured. Once `data/staff_labels.csv` is available,
-run `python agreement.py`, confirm that all 30 posts matched, and record the
-actual rate and every adjudicated disagreement below.
+**Agreement rate: 29 / 30 = 96.7%.** There is one disagreement. The rate is
+reported before adjudication; retaining or conceding a disagreement does not
+rewrite the original labels or increase this rate.
 
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**Disagreement 1 — sp_014**
 
-**Disagreements**
+> Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+**Staff said / accepted first-pass label:** `hot_take` / `analysis`.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
+**Strongest case for staff:** Rule 1 distinguishes load-bearing facts from
+decoration. The sweeping “whole story” conclusion and “so obviously” can be
+read as a predetermined judgment with a statistic attached. A temporal
+association alone does not establish that shoes caused the entire change or
+that the sport has a problem. Staff's rationale explicitly treats this as its
+canonical decorative-statistic case; that makes the intended answer clear.
 
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
+**Strongest case for analysis:** The post gives a checkable 3% change, locates
+it after a rule change, and uses “so” to connect that observation to its causal
+claim. Under the written definition, the fact can be doing argumentative work
+even if the argument is exaggerated or unconvincing. This resembles the rule's
+analysis example linking faster times to a shoe-rule change. The rule does not
+give an observable test for deciding that this author had already reached the
+conclusion. Tone and overclaiming do not explicitly disqualify an otherwise
+evidence-based argument.
 
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+**Call and reason:** Retain the accepted `analysis` reading as defensible under
+the written rule, while acknowledging that staff intended `hot_take`. Here the
+number supplies the premise for an explicit inference; it is not merely placed
+after a free-standing judgment. The evidence does not justify “the whole
+story,” but an overstrong inference is still an inference from evidence. The
+written distinction between a weak argument and decorative evidence does not
+resolve this case unambiguously.
 
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+**Which pile:** (c), the rule is ambiguous here and the first-pass reading is
+defensible. Pile totals: **(a) 0, (b) 0, (c) 1**. No additional disagreements
+were found or invented.
 
-**What the pattern in my disagreements tells me:**
-
+**What the pattern tells me:** The only split falls on evidence carrying an
+argument versus decorating it. That is conceptually related to the fandom
+model's analysis/opinion errors, and it suggests an audit focus. One defensible
+disagreement is not evidence of systematic inconsistent labeling, and 29/30
+on this running-forum exercise does not certify the separate training labels.
+The 180 pending training reviews remain a distinct unresolved issue.
 
 
 ---
+
+### Feedback follow-through
+
+The supplied feedback refers to the original Unit 5 state. The current
+write-up now engages directly with opinion F1 = 0, the directional confusion,
+and seed 7's all-analysis predictions. Unit 6 baseline files, all three-seed
+result sets, and the agreement output now exist and are linked to the matching
+prose. The historical Unit 5 paragraph has been dated explicitly so it does
+not imply those later artifacts are still absent.
+
+The input-verification criticism remains valid: `labels.csv` still contains
+20 rows marked cold/reviewed and 180 marked human review pending. Acceptance
+of the 30 staff labels does not review those 180 rows. Counts remain 83 analysis,
+54 opinion, 63 question because no training annotations were changed. A future
+training-label audit must record its actual decisions and any changed counts,
+preserve the dataset version behind these results, and precede further training.
+It must not be represented by deleting pending-review notes. This is an open
+data-quality limitation, not a completed fix.
+
 
 ## The Improvement
 
@@ -730,7 +765,8 @@ isolated from that associated schedule change.
 per original run, modest loss reduction, and no held-out opinion predictions
 on any seed. Additional training and a larger update rate test the hypothesis
 that the current training schedule is insufficient. They do not assume that
-label inconsistency has been ruled out; the staff agreement check is pending.
+label inconsistency has been ruled out. The staff check was pending when
+this experiment was declared and is now reported above.
 Both stages will be reported even if either makes performance worse.
 
 ### Run Log — Intermediate: six epochs, original learning rate
@@ -816,8 +852,8 @@ After both changes, criterion 4 is MET; criteria 1, 2, 3, 5 are MISSED.
 Improved averages do not override a failed seed. These are small,
 reused development comparisons after inspecting earlier test results; they
 do not establish performance on a new untouched evaluation set. The staff
-agreement check remains pending, so these training experiments do not resolve
-labeling consistency. No extra parameter search, relabeling, or new examples
+agreement check is now complete, but it uses a separate taxonomy; these
+training experiments and that check do not resolve training-label consistency. No extra parameter search, relabeling, or new examples
 were introduced.
 
 ### Final confusion matrices
