@@ -704,9 +704,34 @@ actual rate and every adjudicated disagreement below.
 
 ## The Improvement
 
-**What I changed:**
+**Experiment declared before running, October 28, 2026:** The course author
+authorized two changes for this course test run. The second measured
+improvement is declared here in advance. Both changes concern training;
+dataset labels, taxonomy, split procedure, and acceptance criteria stay fixed.
 
-**Which diagnosis pointed at it:**
+**What I changed:** Two sequential stages, each retraining from the base model
+with seeds 42, 7, and 2024:
+
+1. Increase epochs from 3 to 6, retaining learning rate `2e-5`. Save the
+   intermediate trials as `results_three_seeds_epochs6.json`.
+2. Retain 6 epochs and increase learning rate from `2e-5` to `5e-5`. Save the
+   final trials as `results_three_seeds_after.json` with `RUN_LABEL = "after"`.
+
+Batch size remains 16 and maximum length remains 320. The intermediate stage
+isolates the effect of a longer training schedule; the final stage tests the
+additional effect of a higher learning rate at that schedule. These are new
+training runs, not continued training of the previous checkpoint. Results from
+the original three-epoch run remain in `results_three_seeds_before.json`.
+The learning-rate scheduler remains unchanged; increasing epochs also extends
+the existing decay schedule. No claim will be made that extra updates are
+isolated from that associated schedule change.
+
+**Which diagnosis pointed at it:** Milestone 4 found only 27 optimizer updates
+per original run, modest loss reduction, and no held-out opinion predictions
+on any seed. Additional training and a larger update rate test the hypothesis
+that the current training schedule is insufficient. They do not assume that
+label inconsistency has been ruled out; the staff agreement check is pending.
+Both stages will be reported even if either makes performance worse.
 
 ### Run Log — After
 
