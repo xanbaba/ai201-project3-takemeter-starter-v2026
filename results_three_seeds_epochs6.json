@@ -1,0 +1,179 @@
+[
+  {
+    "seed": 42,
+    "n_test": 30,
+    "accuracy": 0.6666666666666666,
+    "f1_macro": 0.5920380273321451,
+    "per_label": {
+      "analysis": {
+        "precision": 0.65,
+        "recall": 1.0,
+        "f1": 0.7878787878787878,
+        "support": 13
+      },
+      "opinion": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4,
+        "support": 8
+      },
+      "question": {
+        "precision": 0.625,
+        "recall": 0.5555555555555556,
+        "f1": 0.5882352941176471,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "analysis": {
+        "analysis": 13,
+        "opinion": 0,
+        "question": 0
+      },
+      "opinion": {
+        "analysis": 3,
+        "opinion": 2,
+        "question": 3
+      },
+      "question": {
+        "analysis": 4,
+        "opinion": 0,
+        "question": 5
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.5458563566207886,
+      "mean_when_wrong": 0.5074928998947144,
+      "accuracy_most_confident_third": 0.7,
+      "accuracy_least_confident_third": 0.6,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 320,
+    "epochs": 6,
+    "learning_rate": 2e-05,
+    "batch_size": 16,
+    "base_model": "distilbert-base-uncased",
+    "run_label": "epochs6"
+  },
+  {
+    "seed": 7,
+    "n_test": 30,
+    "accuracy": 0.7333333333333333,
+    "f1_macro": 0.625833908442604,
+    "per_label": {
+      "analysis": {
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "f1": 0.7857142857142857,
+        "support": 12
+      },
+      "opinion": {
+        "precision": 1.0,
+        "recall": 0.125,
+        "f1": 0.2222222222222222,
+        "support": 8
+      },
+      "question": {
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "f1": 0.8695652173913043,
+        "support": 10
+      }
+    },
+    "confusion": {
+      "analysis": {
+        "analysis": 11,
+        "opinion": 0,
+        "question": 1
+      },
+      "opinion": {
+        "analysis": 5,
+        "opinion": 1,
+        "question": 2
+      },
+      "question": {
+        "analysis": 0,
+        "opinion": 0,
+        "question": 10
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.5376362800598145,
+      "mean_when_wrong": 0.5285689830780029,
+      "accuracy_most_confident_third": 0.8,
+      "accuracy_least_confident_third": 0.7,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 320,
+    "epochs": 6,
+    "learning_rate": 2e-05,
+    "batch_size": 16,
+    "base_model": "distilbert-base-uncased",
+    "run_label": "epochs6"
+  },
+  {
+    "seed": 2024,
+    "n_test": 30,
+    "accuracy": 0.6333333333333333,
+    "f1_macro": 0.5815295815295816,
+    "per_label": {
+      "analysis": {
+        "precision": 0.6666666666666666,
+        "recall": 0.7692307692307693,
+        "f1": 0.7142857142857143,
+        "support": 13
+      },
+      "opinion": {
+        "precision": 0.6666666666666666,
+        "recall": 0.25,
+        "f1": 0.36363636363636365,
+        "support": 8
+      },
+      "question": {
+        "precision": 0.5833333333333334,
+        "recall": 0.7777777777777778,
+        "f1": 0.6666666666666666,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "analysis": {
+        "analysis": 10,
+        "opinion": 0,
+        "question": 3
+      },
+      "opinion": {
+        "analysis": 4,
+        "opinion": 2,
+        "question": 2
+      },
+      "question": {
+        "analysis": 1,
+        "opinion": 1,
+        "question": 7
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.48237523436546326,
+      "mean_when_wrong": 0.4709671139717102,
+      "accuracy_most_confident_third": 0.9,
+      "accuracy_least_confident_third": 0.7,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.14.1+cpu",
+    "max_length": 320,
+    "epochs": 6,
+    "learning_rate": 2e-05,
+    "batch_size": 16,
+    "base_model": "distilbert-base-uncased",
+    "run_label": "epochs6"
+  }
+]
